@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────
-   Ken Portfolio — Design Tokens & Dark Foundation
-   Inspired by sofiyanzau.com visual identity
+   Kennedy Odeyo Otieno Portfolio — GeoHabari UI Design System
+   Color Palette: Deep Dark (#040406), Geo-Green (#8DC63F), Cyber-Purple (#783FC6)
    ────────────────────────────────────────────── */
 
 :root {
   /* Core palette */
-  --background: #050505;
-  --background-elevated: #0a0a0a;
-  --background-card: #121212;
-  --foreground: #ededed;
-  --foreground-muted: #a1a1aa;
+  --background: #040406;
+  --background-elevated: #09090e;
+  --background-card: #0f0f17;
+  --foreground: #f4f4f6;
+  --foreground-muted: #a1a1b5;
 
-  /* Accent / Glow */
-  --accent: #3b82f6;
-  --accent-glow: rgba(59, 130, 246, 0.15);
-  --border-subtle: #1e293b;
-  --border-glow: rgba(59, 130, 246, 0.25);
+  /* GeoHabari Brand Accents */
+  --geo-green: #8dc63f;
+  --geo-green-glow: rgba(141, 198, 63, 0.2);
+  --cyber-purple: #783fc6;
+  --cyber-purple-glow: rgba(120, 63, 198, 0.25);
+  
+  --border-subtle: #1a1a27;
+  --border-glow: rgba(141, 198, 63, 0.35);
 
   /* Typography */
-  --font-display: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-space-grotesk), "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), "JetBrains Mono", "Fira Code", monospace;
 }
 
@@ -31,11 +34,11 @@
   --color-background-card: var(--background-card);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
-  --color-accent: var(--accent);
-  --color-accent-glow: var(--accent-glow);
+  --color-geo-green: var(--geo-green);
+  --color-cyber-purple: var(--cyber-purple);
   --color-border-subtle: var(--border-subtle);
   --color-border-glow: var(--border-glow);
-  --font-sans: var(--font-display);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
 }
 
@@ -52,11 +55,11 @@ body {
 /* ── Selection ────────────────────────────────── */
 
 ::selection {
-  background: var(--accent);
+  background: var(--cyber-purple);
   color: #ffffff;
 }
 
-/* ── Scrollbar (Webkit) ───────────────────────── */
+/* ── Custom Scrollbar ────────────────────────── */
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -67,50 +70,73 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
+  background: #252538;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground-muted);
+  background: var(--geo-green);
 }
 
-/* ── Utility Classes ──────────────────────────── */
+/* ── GeoHabari Visual Accents & Micro-Animations ──────── */
 
-.glow-border {
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 0 15px var(--accent-glow), inset 0 0 15px var(--accent-glow);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.glow-border:hover {
-  border-color: var(--border-glow);
-  box-shadow: 0 0 25px var(--accent-glow), inset 0 0 25px var(--accent-glow);
-}
-
-.card-elevated {
-  background: var(--background-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.card-elevated:hover {
-  border-color: var(--border-glow);
-  box-shadow: 0 0 30px var(--accent-glow);
-  transform: translateY(-2px);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, var(--foreground-muted) 100%);
+/* Geo-Green & Cyber-Purple Gradient Text */
+.text-gradient-geo {
+  background: linear-gradient(135deg, #8dc63f 0%, #a4e052 40%, #783fc6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.mono-accent {
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-size: 0.8em;
-  letter-spacing: 0.05em;
+.text-gradient-purple {
+  background: linear-gradient(135deg, #a766ff 0%, #783fc6 60%, #8dc63f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Interactive Card Base */
+.card-elevated {
+  background: var(--background-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-elevated:hover {
+  border-color: rgba(141, 198, 63, 0.4);
+  box-shadow: 0 12px 30px rgba(120, 63, 198, 0.15), 0 0 20px rgba(141, 198, 63, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Glowing Radar Dot */
+.radar-pulse {
+  position: relative;
+}
+
+.radar-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: var(--geo-green);
+  opacity: 0.7;
+  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPing {
+  75%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Topographic Contour Background Grid */
+.topo-grid-bg {
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(120, 63, 198, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(141, 198, 63, 0.12) 0%, transparent 45%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 }
