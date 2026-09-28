@@ -1,41 +1,36 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────
-   Kennedy Odeyo Otieno Portfolio — Bright & Minimal Design System
-   Inspired by GeoHabari Light Canvas & Sofiyan Editorial Simplicity
+   Kennedy Odeyo Otieno Portfolio — Minimalist Design System
+   Inspired by my-port-folio-three-psi.vercel.app
    ────────────────────────────────────────────── */
 
 :root {
-  /* Crisp Light Palette */
-  --background: #fcfcfd;
-  --background-elevated: #ffffff;
+  /* Crisp Porcelain Palette */
+  --background: #fafafa;
   --background-card: #ffffff;
   
-  --foreground: #09090b;
-  --foreground-muted: #52525b;
+  --foreground: #18181b;
+  --foreground-muted: #71717a;
 
-  /* Minimal Accents */
-  --accent-primary: #783fc6;
-  --accent-secondary: #8dc63f;
-  --accent-cyan: #0284c7;
+  /* Minimal Palette Accents */
+  --accent-primary: #6366f1;
+  --accent-emerald: #10b981;
 
   --border-subtle: #e4e4e7;
-  --border-hover: #783fc6;
+  --border-hover: #a1a1aa;
 
   /* Typography */
   --font-display: var(--font-space-grotesk), "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-background-elevated: var(--background-elevated);
   --color-background-card: var(--background-card);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
-  --color-accent-primary: var(--accent-primary);
-  --color-accent-secondary: var(--accent-secondary);
   --color-border-subtle: var(--border-subtle);
   --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
@@ -54,14 +49,14 @@ body {
 /* ── Selection ────────────────────────────────── */
 
 ::selection {
-  background: #783fc6;
+  background: #6366f1;
   color: #ffffff;
 }
 
 /* ── Custom Scrollbar ────────────────────────── */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -69,69 +64,41 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
-  border-radius: 3px;
+  background: #e4e4e7;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #783fc6;
+  background: #a1a1aa;
 }
 
-/* ── Typography Gradients & Badges ────────────── */
-
-.text-gradient-purple {
-  background: linear-gradient(135deg, #09090b 0%, #783fc6 70%, #8dc63f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-geo {
-  background: linear-gradient(135deg, #783fc6 0%, #0284c7 50%, #8dc63f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── Clean White Card System ──────────────────── */
+/* ── Minimal Card Systems ──────────────────────── */
 
 .card-elevated {
   background: var(--background-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 20px;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 16px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .card-elevated:hover {
-  border-color: #783fc6;
-  box-shadow: 0 16px 36px rgba(120, 63, 198, 0.12);
-  transform: translateY(-4px);
+  border-color: #a1a1aa;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
 }
 
-/* Light Pattern Background */
-.bright-pattern-bg {
-  background-image: 
-    radial-gradient(circle at 10% 10%, rgba(120, 63, 198, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 90% 90%, rgba(141, 198, 63, 0.05) 0%, transparent 40%),
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+/* Minimal Subtle Pulse */
+.status-pulse-green {
+  box-shadow: 0 0 6px #10b981;
+  animation: pulseGreen 2s infinite ease-in-out;
 }
 
-/* Pulsing LED Indicator */
-.led-pulse-green {
-  box-shadow: 0 0 8px #8dc63f;
-  animation: ledPulse 1.8s infinite ease-in-out;
-}
-
-@keyframes ledPulse {
+@keyframes pulseGreen {
   0%, 100% {
     opacity: 1;
-    transform: scale(1);
   }
   50% {
-    opacity: 0.5;
-    transform: scale(0.85);
+    opacity: 0.4;
   }
 }
