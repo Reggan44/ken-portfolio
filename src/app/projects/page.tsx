@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Cpu, ArrowRight, Code2, ExternalLink, Filter } from "lucide-react";
 
-// Real Projects Data extracted from Kennedy Odeyo Otieno's PDF Portfolio
+// Real Projects Data from Kennedy Odeyo Otieno's PDF Portfolio
 const pdfProjects = [
   {
     _id: "cargo-care",
@@ -79,35 +79,35 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-24 pb-16 px-6 md:px-12 max-w-6xl mx-auto space-y-12">
+    <div className="bright-pattern-bg pt-24 pb-16 px-6 md:px-12 max-w-6xl mx-auto space-y-12">
       {/* Header */}
-      <div className="space-y-4 border-b border-[#1e293b] pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-xs font-mono">
-          <Cpu className="w-3.5 h-3.5" />
+      <div className="space-y-4 border-b border-zinc-200 pb-8">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#783fc6]/10 border border-[#783fc6]/20 text-[#783fc6] text-xs font-mono font-semibold">
+          <Cpu className="w-3.5 h-3.5 text-[#783fc6]" />
           HARDWARE &amp; EMBEDDED SYSTEMS ARCHIVE
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#ededed]">
+        <h1 className="text-4xl md:text-5xl font-bold text-zinc-900">
           Projects &amp; Board Bring-Ups
         </h1>
-        <p className="text-base md:text-lg text-[#a1a1aa] max-w-2xl leading-relaxed">
+        <p className="text-base md:text-lg text-zinc-600 max-w-2xl leading-relaxed">
           Comprehensive documentation of real-world engineered builds by Kennedy Odeyo Otieno — featuring custom PCBs, RTOS firmware, cellular IoT, and power metering.
         </p>
       </div>
 
       {/* Filter Badges */}
-      <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-[#a1a1aa]">
-        <div className="flex items-center gap-1.5 mr-2 text-[#ededed]">
-          <Filter className="w-3.5 h-3.5 text-[#3b82f6]" />
+      <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-zinc-500">
+        <div className="flex items-center gap-1.5 mr-2 text-zinc-900 font-bold">
+          <Filter className="w-3.5 h-3.5 text-[#783fc6]" />
           <span>Filter:</span>
         </div>
         {["ALL", "ESP32", "FreeRTOS", "Energy Metering", "Cold Chain", "GSM/GPS", "BMS"].map(
           (tag, i) => (
             <button
               key={tag}
-              className={`px-3 py-1.5 rounded-full border transition-colors ${
+              className={`px-3.5 py-1.5 rounded-full border transition-all ${
                 i === 0
-                  ? "bg-[#3b82f6]/20 border-[#3b82f6]/40 text-[#3b82f6]"
-                  : "bg-[#0a0a0a] border-[#1e293b] hover:border-[#3b82f6]/40 hover:text-[#ededed]"
+                  ? "bg-[#783fc6] border-[#783fc6] text-white font-bold"
+                  : "bg-white border-zinc-200 text-zinc-600 hover:border-[#783fc6] hover:text-[#783fc6]"
               }`}
             >
               {tag}
@@ -121,21 +121,21 @@ export default function ProjectsPage() {
         {pdfProjects.map((project) => (
           <article
             key={project._id}
-            className="card-elevated p-8 space-y-6 group hover:border-[#3b82f6]/40"
+            className="card-elevated p-8 space-y-6 group hover:border-[#783fc6]"
           >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#1e293b]/60 pb-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-100 pb-4">
               <div>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {project.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-[11px] font-mono"
+                      className="px-2.5 py-0.5 rounded bg-[#783fc6]/10 border border-[#783fc6]/20 text-[#783fc6] text-[11px] font-mono font-semibold"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
-                <h2 className="text-2xl font-bold text-[#ededed] group-hover:text-[#3b82f6] transition-colors">
+                <h2 className="text-2xl font-bold text-zinc-900 group-hover:text-[#783fc6] transition-colors">
                   <Link href={`/projects/${project.slug}`}>{project.title}</Link>
                 </h2>
               </div>
@@ -146,7 +146,7 @@ export default function ProjectsPage() {
                     href={project.githubRepo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 hover:text-[#3b82f6] transition-colors"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-zinc-50 border border-zinc-200 hover:border-[#783fc6] hover:text-[#783fc6] transition-colors"
                   >
                     <Code2 className="w-3.5 h-3.5" />
                     <span>Source Repository</span>
@@ -155,7 +155,7 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            <p className="text-sm text-[#a1a1aa] leading-relaxed">
+            <p className="text-sm text-zinc-600 leading-relaxed">
               {project.summary}
             </p>
 
@@ -164,10 +164,10 @@ export default function ProjectsPage() {
               {project.specs.map((spec, i) => (
                 <div
                   key={i}
-                  className="p-2.5 rounded bg-[#0a0a0a] border border-[#1e293b]/40 flex justify-between gap-2"
+                  className="p-3 rounded bg-zinc-50 border border-zinc-200/80 flex justify-between gap-2"
                 >
-                  <span className="text-[#666666]">{spec.key}:</span>
-                  <span className="text-[#ededed] font-medium text-right">
+                  <span className="text-zinc-400">{spec.key}:</span>
+                  <span className="text-zinc-900 font-semibold text-right">
                     {spec.value}
                   </span>
                 </div>
@@ -177,9 +177,9 @@ export default function ProjectsPage() {
             <div className="pt-4 flex justify-end">
               <Link
                 href={`/projects/${project.slug}`}
-                className="inline-flex items-center gap-2 text-xs font-mono text-[#3b82f6] hover:underline"
+                className="inline-flex items-center gap-2 text-xs font-mono text-[#783fc6] font-bold hover:underline"
               >
-                <span>Read Full Technical Specs &amp; System Architecture</span>
+                <span>Read Technical Specs &amp; Architecture</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

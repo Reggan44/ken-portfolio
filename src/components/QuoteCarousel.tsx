@@ -44,14 +44,10 @@ export function QuoteCarousel() {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-16 px-6 md:px-12 bg-[#f8f9fa] text-[#0f0f17] rounded-3xl my-12 border border-[#e2e8f0] shadow-xl relative overflow-hidden">
-      {/* Visual Accent Overlay */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#783fc6]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#8dc63f]/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto space-y-8 relative z-10">
+    <section className="py-14 px-6 md:px-12 bg-white text-zinc-900 rounded-3xl my-12 border border-zinc-200/80 shadow-md relative overflow-hidden">
+      <div className="max-w-4xl mx-auto space-y-6 relative z-10">
         {/* Header Badge */}
-        <div className="flex items-center justify-between border-b border-[#e2e8f0] pb-4">
+        <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#783fc6]/10 text-[#783fc6] text-xs font-mono font-bold">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>{current.tag}</span>
@@ -62,14 +58,14 @@ export function QuoteCarousel() {
             <button
               onClick={handlePrev}
               aria-label="Previous Testimonial"
-              className="w-10 h-10 rounded-full border border-[#cbd5e1] bg-white text-[#0f0f17] flex items-center justify-center hover:bg-[#783fc6] hover:text-white hover:border-[#783fc6] transition-all shadow-sm"
+              className="w-10 h-10 rounded-full border border-zinc-200 bg-zinc-50 text-zinc-800 flex items-center justify-center hover:bg-[#783fc6] hover:text-white hover:border-[#783fc6] transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
               aria-label="Next Testimonial"
-              className="w-10 h-10 rounded-full border border-[#cbd5e1] bg-white text-[#0f0f17] flex items-center justify-center hover:bg-[#8dc63f] hover:text-[#040406] hover:border-[#8dc63f] transition-all shadow-sm"
+              className="w-10 h-10 rounded-full border border-zinc-200 bg-zinc-50 text-zinc-800 flex items-center justify-center hover:bg-[#783fc6] hover:text-white hover:border-[#783fc6] transition-all"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -77,17 +73,17 @@ export function QuoteCarousel() {
         </div>
 
         {/* Quote Content */}
-        <div className="space-y-6">
-          <Quote className="w-10 h-10 text-[#8dc63f] opacity-80" />
-          <p className="text-xl sm:text-2xl font-serif leading-relaxed text-[#0f0f17] italic">
+        <div className="space-y-4">
+          <Quote className="w-8 h-8 text-[#783fc6] opacity-70" />
+          <p className="text-xl sm:text-2xl font-serif leading-relaxed text-zinc-900 italic">
             "{current.quote}"
           </p>
 
           <div className="pt-2">
-            <div className="text-base font-bold text-[#0f0f17] font-mono">
+            <div className="text-sm font-bold text-zinc-900 font-mono">
               {current.author}
             </div>
-            <div className="text-xs text-[#64748b] font-mono">
+            <div className="text-xs text-zinc-500 font-mono">
               {current.role}
             </div>
           </div>
@@ -102,7 +98,7 @@ export function QuoteCarousel() {
               className={`h-2 rounded-full transition-all ${
                 i === currentIndex
                   ? "w-8 bg-[#783fc6]"
-                  : "w-2 bg-[#cbd5e1] hover:bg-[#94a3b8]"
+                  : "w-2 bg-zinc-200 hover:bg-zinc-400"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
