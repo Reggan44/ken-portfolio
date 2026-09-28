@@ -260,8 +260,9 @@ Next.js App Router Structure & Visual Guidelines:
 - [x] **Phase 1: Project Foundation & CMS Schema Setup** ✅
   - Deliverable: Next.js App Router workspace initialized with Tailwind CSS, Lucide Icons, and Sanity Studio configured with `project` and `post` schemas.
   - Completed: 2026-09-28 — Build verified clean (Next.js 16.3.6 / Turbopack).
-- [ ] **Phase 2: Core Design System & Global Layout**
+- [x] **Phase 2: Core Design System & Global Layout** ✅
   - Deliverable: Deep dark-themed high-tech UI components (`#050505` / `#0a0a0a`), floating navigation with micro-interactions, glowing accents, responsive footer, and global layout structure.
+  - Completed: 2026-09-28 — Clean build verified.
 - [ ] **Phase 3: Projects Module (Index & Dynamic Detail Pages)**
   - Deliverable: Dynamic `/projects` catalog page with filterable tags and cinematic full-width project cards, plus `/projects/[slug]` detail page with BOM table, technical specs, macro gallery, and CAD/GitHub CTA buttons.
 - [ ] **Phase 4: Blog & Tutorials Module with MDX, Code & Math**
