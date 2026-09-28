@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────
-   Kennedy Odeyo Otieno Portfolio — GeoHabari UI Design System
-   Color Palette: Deep Dark (#040406), Geo-Green (#8DC63F), Cyber-Purple (#783FC6)
+   Kennedy Odeyo Otieno Portfolio — Synthesized Design System
+   Inspired by sofiyanzau.com + geohabari.com + magicalkenya.com
    ────────────────────────────────────────────── */
 
 :root {
@@ -10,16 +10,21 @@
   --background: #040406;
   --background-elevated: #09090e;
   --background-card: #0f0f17;
+  --light-canvas: #f8f9fa;
+  --light-canvas-card: #ffffff;
   --foreground: #f4f4f6;
+  --foreground-dark: #0f0f17;
   --foreground-muted: #a1a1b5;
 
-  /* GeoHabari Brand Accents */
+  /* Accent Colors */
   --geo-green: #8dc63f;
-  --geo-green-glow: rgba(141, 198, 63, 0.2);
+  --geo-green-glow: rgba(141, 198, 63, 0.25);
   --cyber-purple: #783fc6;
   --cyber-purple-glow: rgba(120, 63, 198, 0.25);
-  
+  --neon-cyan: #06b6d4;
+
   --border-subtle: #1a1a27;
+  --border-light: #e2e8f0;
   --border-glow: rgba(141, 198, 63, 0.35);
 
   /* Typography */
@@ -32,12 +37,13 @@
   --color-background: var(--background);
   --color-background-elevated: var(--background-elevated);
   --color-background-card: var(--background-card);
+  --color-light-canvas: var(--light-canvas);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
   --color-geo-green: var(--geo-green);
   --color-cyber-purple: var(--cyber-purple);
+  --color-neon-cyan: var(--neon-cyan);
   --color-border-subtle: var(--border-subtle);
-  --color-border-glow: var(--border-glow);
   --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
 }
@@ -78,11 +84,10 @@ body {
   background: var(--geo-green);
 }
 
-/* ── GeoHabari Visual Accents & Micro-Animations ──────── */
+/* ── Gradient Utilities ────────────────────────── */
 
-/* Geo-Green & Cyber-Purple Gradient Text */
 .text-gradient-geo {
-  background: linear-gradient(135deg, #8dc63f 0%, #a4e052 40%, #783fc6 100%);
+  background: linear-gradient(135deg, #8dc63f 0%, #a4e052 35%, #783fc6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,48 +100,62 @@ body {
   background-clip: text;
 }
 
-/* Interactive Card Base */
+/* ── Card Systems ──────────────────────────────── */
+
+/* Dark Mode Elevated Card (Magical Kenya Grid + Sofiyan Aesthetics) */
 .card-elevated {
   background: var(--background-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-elevated:hover {
-  border-color: rgba(141, 198, 63, 0.4);
-  box-shadow: 0 12px 30px rgba(120, 63, 198, 0.15), 0 0 20px rgba(141, 198, 63, 0.1);
+  border-color: rgba(141, 198, 63, 0.45);
+  box-shadow: 0 16px 36px rgba(120, 63, 198, 0.2), 0 0 25px rgba(141, 198, 63, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Light Canvas Card (GeoHabari Contrast Section) */
+.card-light-canvas {
+  background: var(--light-canvas-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  color: var(--foreground-dark);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-light-canvas:hover {
+  border-color: var(--cyber-purple);
+  box-shadow: 0 12px 30px rgba(120, 63, 198, 0.12);
   transform: translateY(-3px);
 }
 
-/* Glowing Radar Dot */
-.radar-pulse {
-  position: relative;
-}
+/* ── Topographic Contour & Circuit Grid Background ──────── */
 
-.radar-pulse::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 9999px;
-  background: var(--geo-green);
-  opacity: 0.7;
-  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes radarPing {
-  75%, 100% {
-    transform: scale(2.5);
-    opacity: 0;
-  }
-}
-
-/* Topographic Contour Background Grid */
-.topo-grid-bg {
+.topo-circuit-bg {
   background-image: 
-    radial-gradient(circle at 15% 20%, rgba(120, 63, 198, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(141, 198, 63, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 10% 15%, rgba(120, 63, 198, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(141, 198, 63, 0.14) 0%, transparent 40%),
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* Pulsing LED Indicator */
+.led-pulse-green {
+  box-shadow: 0 0 10px #8dc63f;
+  animation: ledPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes ledPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
 }
