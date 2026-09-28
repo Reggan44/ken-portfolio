@@ -266,8 +266,9 @@ Next.js App Router Structure & Visual Guidelines:
 - [x] **Phase 3: Projects Module (Index & Dynamic Detail Pages)** ✅
   - Deliverable: Dynamic `/projects` catalog page with filterable tags and cinematic full-width project cards, plus `/projects/[slug]` detail page with BOM table, technical specs, macro gallery, and CAD/GitHub CTA buttons.
   - Completed: 2026-09-28 — Routes compiled & verified (`/projects` & `/projects/[slug]`).
-- [ ] **Phase 4: Blog & Tutorials Module with MDX, Code & Math**
+- [x] **Phase 4: Blog & Tutorials Module with MDX, Code & Math** ✅
   - Deliverable: Dynamic `/blog` index and `/blog/[slug]` view with editorial high-contrast typography, Shiki code highlighting, and KaTeX rendering for math equations.
+  - Completed: 2026-09-28 — Routes compiled & verified (`/blog` & `/blog/[slug]`).
 - [ ] **Phase 5: About Page, SEO Optimization & Final Polish**
   - Deliverable: `/about` interactive timeline & hardware lab layout, dynamic metadata generation, OpenGraph images, performance auditing, and deployment setup.
 
