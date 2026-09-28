@@ -17,6 +17,11 @@
 - **Framework**: Next.js (App Router, React 19 / Server Components)
 - **CMS**: Sanity.io (Sanity Studio embedded / v3)
 - **Styling**: Tailwind CSS
+- **Design System & Visual Identity (Inspired by sofiyanzau.com)**:
+  - **Color Palette & Theme**: Deep dark mode (`#050505` page background, `#0a0a0a` / `#121212` elevated card surfaces, subtle glowing borders `#1e293b` / subtle neon accents).
+  - **Typography**: Editorial typography hierarchy with high-contrast, bold display headlines paired with clean sans-serif body text and refined monospace accents (`JetBrains Mono` / `Fira Code`) for technical specs, BOM tables, register maps, and code snippets.
+  - **Showcases & Media**: Cinematic, full-width project hero sections, macro PCB photography containers, high-resolution CAD embeds, and smooth video clips of hardware bring-up / logic analyzer traces.
+  - **Navigation & Micro-interactions**: Minimalist floating/glassmorphism navbar with subtle hover micro-interactions, soft radial gradients, and glowing accents.
 - **Icons**: Lucide Icons (`lucide-react`)
 - **Code Syntax Highlighting**: Shiki / Prism
 - **Math Rendering**: KaTeX (`rehype-katex`, `remark-math`)
@@ -220,28 +225,28 @@ export default {
 ---
 
 ## [ARCHITECTURE]
-Next.js App Router Structure:
+Next.js App Router Structure & Visual Guidelines:
 ```
 ├── app/
-│   ├── layout.tsx                # Root layout with navbar, footer, global providers & styles
-│   ├── page.tsx                  # Home page (Hero, Featured Projects, Core Skills, Recent Articles)
+│   ├── layout.tsx                # Deep dark root layout (#050505) with minimalist navbar & glowing footer
+│   ├── page.tsx                  # Home page (High-impact Hero, Cinematic Full-Width Featured Projects, Skills Matrix)
 │   ├── projects/
-│   │   ├── page.tsx              # Projects index page (Filter by tag: MCU, RTOS, PCB, etc.)
+│   │   ├── page.tsx              # Projects grid/list with macro media cards & tech tag filtering
 │   │   └── [slug]/
-│   │       └── page.tsx          # Single Project page (Specs, BOM table, CAD links, MDX content)
+│   │       └── page.tsx          # Single Project page (Cinematic Hero, BOM table, SpecsCard, CAD embeds)
 │   ├── blog/
-│   │   ├── page.tsx              # Blog / Tutorials list page
+│   │   ├── page.tsx              # Editorial Blog / Tutorials list page
 │   │   └── [slug]/
-│   │       └── page.tsx          # Single Blog post page (Syntax highlighted code & KaTeX math)
+│   │       └── page.tsx          # Single Blog post page (High-contrast typography, Shiki code & KaTeX math)
 │   ├── about/
-│   │   └── page.tsx              # About Ken, Experience timeline, Hardware Lab setup, Contact
+│   │   └── page.tsx              # About Ken, Interactive Lab Gear / Workstation showcase & Timeline
 │   └── api/
 │       └── draft/                # Sanity preview/draft API routes
 ├── components/
-│   ├── ui/                       # Buttons, Cards, Badges, Modals
-│   ├── layout/                   # Navbar, Footer, Container
-│   ├── mdx/                      # Custom MDX components (CodeBlock, MathFormula, SpecTable)
-│   └── project/                  # BomTable, SpecsCard, GalleryViewer
+│   ├── ui/                       # Modern dark-mode Buttons, GlowCards, Badges, MonospaceAccents
+│   ├── layout/                   # Floating Navbar with micro-interactions, Footer
+│   ├── mdx/                      # Custom MDX components (ShikiCodeBlock, KaTeXFormula, SpecTable)
+│   └── project/                  # BomTable, SpecsCard, GalleryViewer, CinematicMediaCard
 ├── lib/
 │   ├── sanity/                   # Sanity client, queries, image builder
 │   └── utils/                    # Helper functions
@@ -255,11 +260,11 @@ Next.js App Router Structure:
 - [ ] **Phase 1: Project Foundation & CMS Schema Setup**
   - Deliverable: Next.js App Router workspace initialized with Tailwind CSS, Lucide Icons, and Sanity Studio configured with `project` and `post` schemas.
 - [ ] **Phase 2: Core Design System & Global Layout**
-  - Deliverable: Dark-themed high-tech UI components, navigation, responsive footer, and global layout structure.
+  - Deliverable: Deep dark-themed high-tech UI components (`#050505` / `#0a0a0a`), floating navigation with micro-interactions, glowing accents, responsive footer, and global layout structure.
 - [ ] **Phase 3: Projects Module (Index & Dynamic Detail Pages)**
-  - Deliverable: Dynamic `/projects` catalog page with filterable tags, and `/projects/[slug]` detail page with BOM table, technical specs, and CAD/GitHub CTA buttons.
+  - Deliverable: Dynamic `/projects` catalog page with filterable tags and cinematic full-width project cards, plus `/projects/[slug]` detail page with BOM table, technical specs, macro gallery, and CAD/GitHub CTA buttons.
 - [ ] **Phase 4: Blog & Tutorials Module with MDX, Code & Math**
-  - Deliverable: Dynamic `/blog` index and `/blog/[slug]` view with Shiki code highlighting and KaTeX rendering for math equations.
+  - Deliverable: Dynamic `/blog` index and `/blog/[slug]` view with editorial high-contrast typography, Shiki code highlighting, and KaTeX rendering for math equations.
 - [ ] **Phase 5: About Page, SEO Optimization & Final Polish**
   - Deliverable: `/about` interactive timeline & hardware lab layout, dynamic metadata generation, OpenGraph images, performance auditing, and deployment setup.
 
@@ -270,4 +275,8 @@ Next.js App Router Structure:
 2. **Schema Integrity**: Always cross-reference `PROJECT_CONTEXT.md` schema definitions before formulating GROQ queries or building UI components.
 3. **No Breaking Changes**: Ensure all component edits maintain non-breaking prop interfaces and strict TypeScript types.
 4. **Code Syntax & Math Formatting**: All code blocks rendered from Sanity/MDX must utilize Shiki for syntax highlighting, and inline/block LaTeX formulas must be processed via KaTeX.
-5. **Modern Engineering Aesthetics**: Maintain a clean, high-contrast, dark-mode-first aesthetic suitable for an advanced Embedded Systems & IoT Engineering portfolio.
+5. **Modern Visual Identity (sofiyanzau.com Inspired)**: 
+   - Enforce a deep dark background (`#050505` to `#0a0a0a`).
+   - Use high-contrast, editorial typography with large bold titles paired with monospace technical accents (`JetBrains Mono` / `Fira Code`).
+   - Present projects using cinematic full-width media cards (macro PCB photography, board bring-up clips).
+   - Implement floating minimalist navigation with micro-interactions and subtle glowing borders/accents.
