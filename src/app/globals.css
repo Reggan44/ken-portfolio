@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────
+   Ken Portfolio — Design Tokens & Dark Foundation
+   Inspired by sofiyanzau.com visual identity
+   ────────────────────────────────────────────── */
+
+:root {
+  /* Core palette */
+  --background: #050505;
+  --background-elevated: #0a0a0a;
+  --background-card: #121212;
+  --foreground: #ededed;
+  --foreground-muted: #a1a1aa;
+
+  /* Accent / Glow */
+  --accent: #3b82f6;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  --border-subtle: #1e293b;
+  --border-glow: rgba(59, 130, 246, 0.25);
+
+  /* Typography */
+  --font-display: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", "Fira Code", monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-background-card: var(--background-card);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-glow: var(--border-glow);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+/* ── Base ─────────────────────────────────────── */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Selection ────────────────────────────────── */
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ── Scrollbar (Webkit) ───────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-muted);
+}
+
+/* ── Utility Classes ──────────────────────────── */
+
+.glow-border {
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 0 15px var(--accent-glow), inset 0 0 15px var(--accent-glow);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glow-border:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 25px var(--accent-glow), inset 0 0 25px var(--accent-glow);
+}
+
+.card-elevated {
+  background: var(--background-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card-elevated:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 30px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, var(--foreground-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mono-accent {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
