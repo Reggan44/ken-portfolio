@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -13,7 +14,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 
-// Mock Project Database matching the PDF Portfolio
+// Real PDF Project Detail Database with Actual Image Galleries
 const pdfProjectDetailData: Record<string, any> = {
   "cargo-care-tracking-solution": {
     title: "Cargo-Care: Load Manager & Tamper Tracking Solution",
@@ -21,6 +22,12 @@ const pdfProjectDetailData: Record<string, any> = {
     publishedAt: "2026-09-01",
     summary:
       "This battery-powered device tracks the weight and GPS location of cargo carrying goods from loading to dispatch. In case the load is tampered with at any point, automated SMS alerts are dispatched to the owner's phone number. Features onboard OLED screen navigation buttons and dual Wi-Fi Access Point mode.",
+    images: [
+      { src: "/projects/cargo_p1_img1.jpeg", caption: "Cargo-Care PCB Hardware & OLED Interface" },
+      { src: "/projects/cargo_p1_img2.jpeg", caption: "Battery-Powered Enclosure & Antenna Test" },
+      { src: "/projects/cargo_p1_img3.jpeg", caption: "ESP32 Wi-Fi Access Point Connection Mode" },
+      { src: "/projects/cargo_p1_img4.jpeg", caption: "CargoCare Web Configuration Interface" },
+    ],
     specs: [
       { key: "Control Unit", value: "ESP32 (Configured as Wi-Fi Access Point for setup & configuration)" },
       { key: "Cellular & Location", value: "SIM800C GSM/GPRS Module with UART GPS Location Tracking" },
@@ -43,6 +50,12 @@ const pdfProjectDetailData: Record<string, any> = {
     publishedAt: "2026-08-15",
     summary:
       "Industrial AC and renewable DC power metering platform with Raspberry Pi edge processing integration. Transmits real-time multi-phase energy metrics, power factor, and fault diagnosis to Microsoft Azure Cloud.",
+    images: [
+      { src: "/projects/cargo_p2_img1.jpeg", caption: "Oppie-Box 3D PCB Layout Rendering" },
+      { src: "/projects/cargo_p2_img2.jpeg", caption: "CAD Gerber Trace Routing & Power Planes" },
+      { src: "/projects/cargo_p2_img3.jpeg", caption: "Internal Circuit Board & Phase Metering Component" },
+      { src: "/projects/cargo_p2_img4.jpeg", caption: "Field Enclosure Installation & High-Voltage Terminals" },
+    ],
     specs: [
       { key: "MCU Computing", value: "Dual Onboard Atmega328P Microcontrollers" },
       { key: "Edge Gateway", value: "Raspberry Pi Interface for Edge Analytics & Azure Cloud Sync" },
@@ -65,6 +78,12 @@ const pdfProjectDetailData: Record<string, any> = {
     publishedAt: "2026-07-20",
     summary:
       "Battery-powered cold chain logger measuring ambient temperature and humidity. Integrates door contact switch counting, onboard BMS battery charging, automatic voltage source selection, and multi-color RGB diagnostic LEDs.",
+    images: [
+      { src: "/projects/cargo_p3_img1.jpeg", caption: "Unpopulated Custom PCB Top Layer" },
+      { src: "/projects/cargo_p3_img2.jpeg", caption: "Assembled Temp Tag Circuit with Antenna & USB-C" },
+      { src: "/projects/cargo_p3_img3.jpeg", caption: "Assembled Temp Tag Bottom Layer & BMS Charger" },
+      { src: "/projects/cargo_p3_img4.jpeg", caption: "TempTag Live Web Dashboard Interface" },
+    ],
     specs: [
       { key: "Main Processor", value: "ESP32 NodeMCU Development Module" },
       { key: "Environmental Sensor", value: "AHT30 Precision I2C Temperature & Humidity Sensor" },
@@ -86,6 +105,13 @@ const pdfProjectDetailData: Record<string, any> = {
     publishedAt: "2026-06-10",
     summary:
       "Award-winning student engineering design competition project. Secured 1st place in Kenya and the East Africa region before advancing as a Global Finalist at the YESIST12 Finals in Malaysia using Things Cloud platform telemetry.",
+    images: [
+      { src: "/projects/cargo_p4_img1.jpeg", caption: "BMS System Board & Soldering Station Assembly" },
+      { src: "/projects/cargo_p4_img2.jpeg", caption: "Pay-As-You-Go Machine Controller Unit with ESP-32S" },
+      { src: "/projects/cargo_p4_img3.jpeg", caption: "Air Quality Device PCB Routing Diagram" },
+      { src: "/projects/cargo_p4_img4.jpeg", caption: "Safe Safari Enclosed Weatherproof Telemetry Node" },
+      { src: "/projects/cargo_p4_img5.jpeg", caption: "Param Viewer HMI Interface" },
+    ],
     specs: [
       { key: "Cloud Architecture", value: "Things Cloud IoT Telemetry Platform" },
       { key: "Awards", value: "1st Place Kenya & East Africa Region / Global YESIST12 Finalist (Malaysia)" },
@@ -116,30 +142,30 @@ export default async function ProjectDetailPage({
       {/* Back Button */}
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-xs font-mono text-[#a1a1aa] hover:text-[#3b82f6] transition-colors"
+        className="inline-flex items-center gap-2 text-xs font-mono text-zinc-500 hover:text-indigo-600 transition-colors"
       >
         <ArrowLeft className="w-3.5 h-3.5" />
         <span>Back to Projects Archive</span>
       </Link>
 
       {/* Header */}
-      <div className="space-y-6 border-b border-[#1e293b] pb-8">
+      <div className="space-y-6 border-b border-zinc-200 pb-8">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t: string) => (
             <span
               key={t}
-              className="px-2.5 py-1 rounded bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-xs font-mono"
+              className="px-2.5 py-1 rounded bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-semibold"
             >
               {t}
             </span>
           ))}
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-bold text-[#ededed] leading-tight">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 leading-tight">
           {project.title}
         </h1>
 
-        <p className="text-base sm:text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
+        <p className="text-base sm:text-lg text-zinc-600 leading-relaxed max-w-3xl">
           {project.summary}
         </p>
 
@@ -150,7 +176,7 @@ export default async function ProjectDetailPage({
               href={project.githubRepo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-medium transition-all"
             >
               <Code2 className="w-4 h-4" />
               <span>Source Code &amp; Hardware Layout</span>
@@ -159,20 +185,47 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
+      {/* Actual PDF Photo Gallery */}
+      {project.images && project.images.length > 0 && (
+        <section className="space-y-4">
+          <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 font-bold">
+            <Layers className="w-4 h-4" />
+            <span>01 // ACTUAL HARDWARE &amp; BOARD BRING-UP PHOTOS</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {project.images.map((img: any, i: number) => (
+              <div key={i} className="card-elevated overflow-hidden group">
+                <div className="relative h-64 w-full bg-zinc-100 border-b border-zinc-100">
+                  <Image
+                    src={img.src}
+                    alt={img.caption}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-3 text-xs font-mono text-zinc-600 bg-white">
+                  {img.caption}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Specifications Section */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-mono text-[#3b82f6]">
+        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 font-bold">
           <Cpu className="w-4 h-4" />
-          <span>01 // TECHNICAL SPECIFICATIONS &amp; ARCHITECTURE</span>
+          <span>02 // TECHNICAL SPECIFICATIONS &amp; ARCHITECTURE</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
           {project.specs.map((spec: any, i: number) => (
             <div
               key={i}
-              className="p-3 rounded bg-[#0a0a0a] border border-[#1e293b] flex justify-between gap-3"
+              className="p-3 rounded-lg bg-white border border-zinc-200 flex justify-between gap-3 shadow-sm"
             >
-              <span className="text-[#666666]">{spec.key}:</span>
-              <span className="text-[#ededed] font-medium text-right">
+              <span className="text-zinc-400">{spec.key}:</span>
+              <span className="text-zinc-900 font-semibold text-right">
                 {spec.value}
               </span>
             </div>
@@ -182,13 +235,13 @@ export default async function ProjectDetailPage({
 
       {/* Bill of Materials (BOM) */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-mono text-[#3b82f6]">
+        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 font-bold">
           <FileText className="w-4 h-4" />
-          <span>02 // BILL OF MATERIALS (PRIMARY HARDWARE)</span>
+          <span>03 // BILL OF MATERIALS (PRIMARY HARDWARE)</span>
         </div>
-        <div className="overflow-x-auto rounded border border-[#1e293b] bg-[#0a0a0a]">
+        <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm">
           <table className="w-full text-left text-xs font-mono">
-            <thead className="border-b border-[#1e293b] bg-[#121212] text-[#3b82f6]">
+            <thead className="border-b border-zinc-200 bg-zinc-50 text-indigo-700 font-bold">
               <tr>
                 <th className="p-3">Ref</th>
                 <th className="p-3">Component</th>
@@ -196,13 +249,13 @@ export default async function ProjectDetailPage({
                 <th className="p-3 text-right">Qty</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1e293b]/50 text-[#a1a1aa]">
+            <tbody className="divide-y divide-zinc-100 text-zinc-600">
               {project.bom.map((row: any, i: number) => (
-                <tr key={i} className="hover:bg-[#121212]/50 transition-colors">
-                  <td className="p-3 text-[#3b82f6]">{row.reference}</td>
-                  <td className="p-3 font-semibold text-[#ededed]">{row.component}</td>
+                <tr key={i} className="hover:bg-zinc-50 transition-colors">
+                  <td className="p-3 text-indigo-600 font-bold">{row.reference}</td>
+                  <td className="p-3 font-semibold text-zinc-900">{row.component}</td>
                   <td className="p-3">{row.description}</td>
-                  <td className="p-3 text-right text-[#ededed]">{row.qty}</td>
+                  <td className="p-3 text-right text-zinc-900 font-bold">{row.qty}</td>
                 </tr>
               ))}
             </tbody>
