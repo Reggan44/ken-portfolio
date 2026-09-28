@@ -1,53 +1,70 @@
 import Link from "next/link";
 import { Cpu, ArrowRight, Code2, ExternalLink, Filter } from "lucide-react";
 
-// Mock/Fallback Projects Data (used when Sanity dataset is unpopulated)
-const sampleProjects = [
+// Real Projects Data extracted from Kennedy Odeyo Otieno's PDF Portfolio
+const pdfProjects = [
   {
-    _id: "p1",
-    title: "Dual-Core STM32H7 Motor FOC Vector Controller",
-    slug: "stm32-foc-controller",
-    tags: ["MCU", "RTOS", "PCB", "Power Electronics"],
+    _id: "cargo-care",
+    title: "Cargo-Care: Load Manager & Tamper Tracking System",
+    slug: "cargo-care-tracking-solution",
+    tags: ["ESP32", "FreeRTOS", "SIM800C", "IoT", "GPS/GSM", "SPI/I2C/UART"],
     summary:
-      "6-layer high-current PCB designed for brushless DC motor Field Oriented Control (FOC) operating at 48V/50A with dual-core lockstep protection.",
+      "Battery-powered load tracking and manager solution. Monitors real-time weight changes from loading to dispatch with automated tamper SMS alerts, onboard OLED configuration UI, and dual Wi-Fi Access Point mode.",
     specs: [
-      { key: "MCU Architecture", value: "STM32H747XI (Cortex-M7 @ 480MHz + Cortex-M4 @ 240MHz)" },
-      { key: "Operating Voltage", value: "24V – 60V DC Nominal (72V Transient Peak)" },
-      { key: "Continuous Current", value: "50A RMS per phase (Active Thermal Management)" },
-      { key: "Firmware Kernel", value: "FreeRTOS Preemptive with Hard-Real-Time Interrupt Priority" },
+      { key: "Microcontroller", value: "ESP32 (Configured as Wi-Fi Access Point & Station)" },
+      { key: "Cellular & Location", value: "SIM800C GSM/GPRS Module with GPS Location Tracking" },
+      { key: "Telemetry Data", value: "Time, GPS Location, Load Weight, Battery Voltage, Tamper Alerts" },
+      { key: "Protocols & Storage", value: "UART (GPS/GSM), SPI (SD Card Storage), I2C (OLED UI), Wi-Fi" },
+      { key: "Operating System", value: "FreeRTOS Preemptive Kernel for Multitasking & Real-Time Response" },
     ],
     githubRepo: "https://github.com",
-    schematicUrl: "https://github.com",
+    publishedAt: "2026-09-01",
+  },
+  {
+    _id: "oppie-box",
+    title: "Oppie-Box: Industrial Multi-Phase Power Metering & Edge Gateway",
+    slug: "oppie-box-power-metering-gateway",
+    tags: ["Atmega328P", "Raspberry Pi", "Azure Cloud", "Energy Metering", "OneWire/SPI"],
+    summary:
+      "AC/DC power metering and edge computing platform for renewable energy integration. Features dual onboard Atmega328P MCUs, Raspberry Pi cloud bridge, phase LED indicators, and external HMI.",
+    specs: [
+      { key: "Embedded MCUs", value: "2x Atmega328P Microcontrollers (AC/DC Sensing)" },
+      { key: "Edge Computing", value: "Raspberry Pi Integration for Local DSP & Azure Cloud Telemetry" },
+      { key: "Telemetry", value: "Voltage, Current, Power Per Phase, Power Factor, Fault Detection" },
+      { key: "Protocols", value: "OneWire (Sensors), SPI (LCD & Flash Memory), UART (Pi), I2C (RTC)" },
+      { key: "Power Sources", value: "240VAC Mains + Renewable DC Input Ports" },
+    ],
+    githubRepo: "https://github.com",
     publishedAt: "2026-08-15",
   },
   {
-    _id: "p2",
-    title: "Industrial LoRaWAN Gateway & Sub-GHz Node",
-    slug: "lorawan-industrial-gateway",
-    tags: ["IoT", "PCB", "Sub-GHz RF", "Solar Energy"],
+    _id: "temp-tag",
+    title: "Temperature Tag: Cold Chain Monitoring & BMS Solution",
+    slug: "temperature-tag-cold-chain-bms",
+    tags: ["ESP32", "Cold Chain", "BMS", "I2C/SPI/UART", "GPRS"],
     summary:
-      "Ultra-low power remote environmental monitoring system with SX1302 concentrator, satellite failover backup, and solar energy harvesting.",
+      "Cold chain temperature & humidity logging node with onboard battery management (BMS), magnetic door status sensor, automatic voltage source selection, and RGB status LEDs.",
     specs: [
-      { key: "RF Transceiver", value: "Semtech SX1302 / SX1250 Sub-GHz Concentrator" },
-      { key: "Frequency Bands", value: "868 MHz / 915 MHz ISM Band" },
-      { key: "Power Source", value: "Integrated MPPT Solar Charger + LiFePO4 Cell" },
-      { key: "Deep Sleep Power", value: "< 12 µA System Standby Current" },
+      { key: "Core Microcontroller", value: "ESP32 NodeMCU" },
+      { key: "Sensors & RTC", value: "AHT30 Precision Temp/Humidity Sensor & I2C Real-Time Clock" },
+      { key: "Cloud Connection", value: "TCP/IP Over SIM800C Gateway (GPRS Mode)" },
+      { key: "Telemetry & Features", value: "Temp, Humidity, Signal RSSI, Battery Voltage, Door Cycle Count" },
+      { key: "Power System", value: "Li-Ion BMS Charger + Auto Voltage Selector IC" },
     ],
     githubRepo: "https://github.com",
-    cadUrl: "https://github.com",
-    publishedAt: "2026-07-22",
+    publishedAt: "2026-07-20",
   },
   {
-    _id: "p3",
-    title: "Precision Analog Bio-Impedance Measurement Front-End",
-    slug: "precision-bio-impedance-frontend",
-    tags: ["PCB", "Analog", "MCU", "DSP"],
+    _id: "safe-safari",
+    title: "Safe Safari: Global YESIST12 Finalist Telemetry System",
+    slug: "safe-safari-global-finalist-telemetry",
+    tags: ["ThingsCloud", "IoT", "STM32", "Award Winner"],
     summary:
-      "Four-wire kelvin bio-impedance measurement circuit featuring low-noise instrumentation amplifiers and hardware IQ demodulation.",
+      "International competition-winning safety and machine control system. Awarded 1st place in Kenya & East Africa, representing the region at the Global YESIST12 Finals in Malaysia.",
     specs: [
-      { key: "Signal Frequency", value: "1 kHz – 500 kHz Programmable Sine Generator" },
-      { key: "ADC Resolution", value: "24-bit Delta-Sigma ADC (128 kSPS)" },
-      { key: "Dynamic Range", value: "115 dB Signal-to-Noise Ratio (SNR)" },
+      { key: "Platform", value: "Things Cloud IoT Platform Integration" },
+      { key: "Recognition", value: "1st Place Kenya/East Africa — Global YESIST12 Finals (Malaysia)" },
+      { key: "Enclosure Rating", value: "IP65 Weatherproof Industrial Housing" },
     ],
     githubRepo: "https://github.com",
     publishedAt: "2026-06-10",
@@ -55,9 +72,9 @@ const sampleProjects = [
 ];
 
 export const metadata = {
-  title: "Projects & Hardware Bring-Ups | Ken Portfolio",
+  title: "Projects & Hardware Builds | Kennedy Odeyo Otieno Portfolio",
   description:
-    "Engineering portfolio of MCU firmware, multi-layer PCB design, RTOS kernels, and wireless IoT nodes.",
+    "Engineering portfolio of Kennedy Odeyo Otieno — Cargo-Care tracking, Oppie-Box power metering, Cold Chain Temp Tag, and BMS hardware.",
 };
 
 export default function ProjectsPage() {
@@ -73,7 +90,7 @@ export default function ProjectsPage() {
           Projects &amp; Board Bring-Ups
         </h1>
         <p className="text-base md:text-lg text-[#a1a1aa] max-w-2xl leading-relaxed">
-          Comprehensive documentation of engineered hardware — schematic designs, PCB layouts, firmware algorithms, and validation specs.
+          Comprehensive documentation of real-world engineered builds by Kennedy Odeyo Otieno — featuring custom PCBs, RTOS firmware, cellular IoT, and power metering.
         </p>
       </div>
 
@@ -83,7 +100,7 @@ export default function ProjectsPage() {
           <Filter className="w-3.5 h-3.5 text-[#3b82f6]" />
           <span>Filter:</span>
         </div>
-        {["ALL", "MCU", "RTOS", "PCB", "IoT", "Analog", "Power Electronics"].map(
+        {["ALL", "ESP32", "FreeRTOS", "Energy Metering", "Cold Chain", "GSM/GPS", "BMS"].map(
           (tag, i) => (
             <button
               key={tag}
@@ -101,7 +118,7 @@ export default function ProjectsPage() {
 
       {/* Projects List */}
       <div className="grid grid-cols-1 gap-8">
-        {sampleProjects.map((project) => (
+        {pdfProjects.map((project) => (
           <article
             key={project._id}
             className="card-elevated p-8 space-y-6 group hover:border-[#3b82f6]/40"
@@ -132,18 +149,7 @@ export default function ProjectsPage() {
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 hover:text-[#3b82f6] transition-colors"
                   >
                     <Code2 className="w-3.5 h-3.5" />
-                    <span>Source</span>
-                  </a>
-                )}
-                {project.schematicUrl && (
-                  <a
-                    href={project.schematicUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 hover:text-[#3b82f6] transition-colors"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    <span>Schematic</span>
+                    <span>Source Repository</span>
                   </a>
                 )}
               </div>
@@ -173,7 +179,7 @@ export default function ProjectsPage() {
                 href={`/projects/${project.slug}`}
                 className="inline-flex items-center gap-2 text-xs font-mono text-[#3b82f6] hover:underline"
               >
-                <span>Read Full Technical Documentation &amp; BOM</span>
+                <span>Read Full Technical Specs &amp; System Architecture</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

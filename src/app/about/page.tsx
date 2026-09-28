@@ -11,45 +11,39 @@ import {
   Mail,
   Code2,
   Globe,
+  Phone,
 } from "lucide-react";
 
 const labEquipment = [
-  { name: "Oscilloscope", spec: "Rigol MSO5074 4-Channel 350MHz (10 GSa/s)" },
-  { name: "Logic Analyzer", spec: "Saleae Logic Pro 16 (100MHz Digital / 50MHz Analog)" },
-  { name: "Power Supply", spec: "Korad KD3005P Programmable Precision DC Power (0-30V / 5A)" },
-  { name: "Soldering & Rework", spec: "JBC CD-2BQE Station + Quick 861DW Hot Air Rework" },
-  { name: "Thermal Imaging", spec: "FLIR E4 Macro Mode Thermal Camera for PCB Hotspot Analysis" },
-  { name: "Spectrum Analyzer", spec: "TinySA Ultra 6GHz for Sub-GHz & 2.4GHz RF Harmonic Tuning" },
+  { name: "Microcontrollers & SoCs", spec: "ESP32 (Wi-Fi/BLE), STM32 (Cortex-M), ATmega328P, Raspberry Pi 4" },
+  { name: "Cellular & Telemetry", spec: "SIM800C GSM/GPRS, GPS modules, Sub-GHz RF, LoRaWAN concentrators" },
+  { name: "Sensors & Energy", spec: "AHT30 Temp/Humidity, HX711 Load Cell, ZMPT101B Voltage, SCT-013 CT Current" },
+  { name: "Power & Battery Management", spec: "Li-Ion BMS charging, MPPT Solar Controllers, Auto-Voltage Selector ICs" },
+  { name: "Protocols & Storage", spec: "UART, SPI (Flash/SD), I2C (OLED/RTC/Sensors), OneWire, Wi-Fi Access Point" },
+  { name: "Cloud Integration", spec: "Azure Cloud Gateway, GPRS TCP/IP, Things Cloud IoT Platform" },
 ];
 
 const careerTimeline = [
   {
     period: "2024 — PRESENT",
-    role: "Senior Embedded Hardware Systems Architect",
-    company: "Autonomous Robotics & Industrial IoT",
+    role: "Embedded Systems & IoT Engineer",
+    company: "Hardware & Telemetry Solutions",
     details:
-      "Leading 6-layer PCB bring-ups, STM32H7/ESP32-S3 firmware design, sub-100µA battery management circuits, and CAN-FD motor control loop optimization.",
+      "Designing battery-powered load tracking systems (Cargo-Care), multi-phase industrial power meters (Oppie-Box), cold chain telemetry tags with door sensors, and STM32 Battery Management Systems (BMS).",
   },
   {
-    period: "2022 — 2024",
-    role: "IoT Systems Engineer",
-    company: "Smart Edge Telemetry Solutions",
+    period: "GLOBAL FINALIST",
+    role: "1st Place Winner (Kenya & East Africa Region)",
+    company: "YESIST12 Global Finals (Malaysia)",
     details:
-      "Architected LoRaWAN gateways and cell-connected remote sensing nodes. Developed FreeRTOS drivers for low-noise sensor ADCs and onboard flash storage.",
-  },
-  {
-    period: "2020 — 2022",
-    role: "Junior Hardware Engineer",
-    company: "Precision Power Labs",
-    details:
-      "Schematic capture, Altium footprint library management, thermal simulation, and prototype soldering for SMPS DC-DC power converters.",
+      "Awarded 1st place in Kenya and East Africa for Safe Safari IoT telemetry system using Things Cloud platform, advancing to the global finals in Malaysia.",
   },
 ];
 
 export const metadata = {
-  title: "About Ken & Hardware Lab Specs | Portfolio",
+  title: "About Kennedy Odeyo Otieno & Hardware Engineering",
   description:
-    "Career timeline, bench test equipment, CAD/EDA toolchain, and engineering domain expertise of Ken (IoT & Electrical Engineer).",
+    "Bio, contact details (kenodeyo@gmail.com, +254-793036309), hardware skills, and project history of Kennedy Odeyo Otieno.",
 };
 
 export default function AboutPage() {
@@ -59,40 +53,38 @@ export default function AboutPage() {
       <div className="space-y-6 border-b border-[#1e293b] pb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-xs font-mono">
           <User className="w-3.5 h-3.5" />
-          ELECTRICAL ENGINEER &amp; EMBEDDED SYSTEMS DEVELOPER
+          EMBEDDED SYSTEMS &amp; INTERNET OF THINGS (IOT) ENGINEER
         </div>
         <h1 className="text-4xl md:text-6xl font-bold text-[#ededed]">
-          About Ken
+          Kennedy Odeyo Otieno
         </h1>
         <p className="text-base sm:text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
-          I am an Electrical and IoT Engineer passionate about turning high-level software requirements into robust hardware reality. My work bridges bare-metal microcontrollers, FreeRTOS kernels, multi-layer high-frequency PCB layouts, and industrial cloud integration.
+          I am an Embedded Systems and IoT Engineer specializing in real-world hardware bring-ups. My work spans real-time load manager tracking (Cargo-Care), industrial power metering and edge computing (Oppie-Box), cold-chain environmental sensing with BMS, and competitive IoT solutions.
         </p>
 
         <div className="flex flex-wrap gap-4 pt-2 font-mono text-xs">
           <a
-            href="mailto:ken@example.com"
+            href="mailto:kenodeyo@gmail.com"
             className="flex items-center gap-2 px-5 py-2.5 rounded bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold transition-all"
           >
             <Mail className="w-4 h-4" />
-            <span>Get in Touch</span>
+            <span>kenodeyo@gmail.com</span>
           </a>
           <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+254793036309"
             className="flex items-center gap-2 px-5 py-2.5 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 text-[#ededed] hover:text-[#3b82f6] transition-all"
           >
-            <Code2 className="w-4 h-4 text-[#3b82f6]" />
-            <span>GitHub Profile</span>
+            <Phone className="w-4 h-4 text-[#3b82f6]" />
+            <span>+254-793036309</span>
           </a>
         </div>
       </div>
 
-      {/* Hardware Bench & Test Equipment */}
+      {/* Hardware Systems & Skills */}
       <section className="space-y-6">
         <div className="flex items-center gap-2 font-mono text-sm text-[#3b82f6]">
           <Wrench className="w-4 h-4" />
-          <span>01 // HARDWARE BENCH &amp; TEST EQUIPMENT</span>
+          <span>01 // HARDWARE SYSTEMS &amp; EXPERTISE</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {labEquipment.map((equip, idx) => (
@@ -111,39 +103,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* EDA & Firmware Toolchain */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-2 font-mono text-sm text-[#3b82f6]">
-          <Cpu className="w-4 h-4" />
-          <span>02 // EDA &amp; FIRMWARE TOOLCHAIN</span>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-          {[
-            { label: "PCB Layout", value: "KiCad 8.0 / Altium Designer" },
-            { label: "Firmware C/C++", value: "GCC ARM / CMake / STM32Cube" },
-            { label: "RTOS Kernels", value: "FreeRTOS / Zephyr RTOS" },
-            { label: "RF Simulation", value: "openEMS / KiCad FEM" },
-            { label: "Logic Analysis", value: "Saleae Logic / PulseView" },
-            { label: "Version Control", value: "Git / GitHub Actions / CI" },
-            { label: "Math & DSP", value: "MATLAB / Python NumPy" },
-            { label: "3D Enclosures", value: "Autodesk Fusion 360" },
-          ].map((tool, i) => (
-            <div
-              key={i}
-              className="p-3 rounded bg-[#0a0a0a] border border-[#1e293b] space-y-1"
-            >
-              <div className="text-[#666666] text-[11px]">{tool.label}</div>
-              <div className="text-[#ededed] font-semibold">{tool.value}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Career Timeline */}
+      {/* Accomplishments & Project History */}
       <section className="space-y-6">
         <div className="flex items-center gap-2 font-mono text-sm text-[#3b82f6]">
           <Award className="w-4 h-4" />
-          <span>03 // PROFESSIONAL EXPERIENCE</span>
+          <span>02 // KEY HIGHLIGHTS &amp; COMPETITIONS</span>
         </div>
         <div className="space-y-6 border-l-2 border-[#1e293b] pl-6 ml-2">
           {careerTimeline.map((item, idx) => (
@@ -153,7 +117,7 @@ export default function AboutPage() {
                 {item.period}
               </div>
               <h3 className="text-lg font-bold text-[#ededed]">
-                {item.role} <span className="text-[#a1a1aa] font-normal">@ {item.company}</span>
+                {item.role} <span className="text-[#a1a1aa] font-normal">({item.company})</span>
               </h3>
               <p className="text-xs text-[#a1a1aa] leading-relaxed max-w-2xl">
                 {item.details}

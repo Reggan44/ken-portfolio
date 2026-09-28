@@ -5,26 +5,39 @@ import {
   ArrowRight,
   Terminal,
   Radio,
+  ShieldAlert,
+  Activity,
+  Layers,
+  Thermometer,
 } from "lucide-react";
 
-const featuredHighlights = [
+const pdfFeaturedHighlights = [
   {
-    title: "High-Frequency STM32 Motor Controller",
-    category: "PCB & FIRMWARE",
-    specs: "FOC Vector Control • 48V / 50A • FreeRTOS",
+    title: "Cargo-Care: Load Manager & Tamper Tracker",
+    category: "ESP32 / RTOS / GSM",
+    specs: "FreeRTOS • SIM800C GPS/SMS • Wi-Fi AP • HX711 Load Cell",
     description:
-      "Custom 6-layer high-current PCB designed for brushless DC motor FOC control with dual-core lockstep STM32H7.",
-    link: "/projects/stm32-foc-controller",
-    tag: "MCU / RTOS",
+      "Battery-powered weight and tamper tracking solution for goods in transit with real-time SMS alerts and OLED configuration screen.",
+    link: "/projects/cargo-care-tracking-solution",
+    tag: "FreeRTOS / IoT",
   },
   {
-    title: "Industrial LoRaWAN Gateway Node",
-    category: "IOT / RF DESIGN",
-    specs: "SX1302 Concentrator • Sub-GHz RF • Solar Powered",
+    title: "Oppie-Box: Power Metering & Edge Gateway",
+    category: "ATMEGA328P / RASPBERRY PI / AZURE",
+    specs: "Dual ATmega328P • Edge Computing • AC/DC Metering",
     description:
-      "Ultra-low power remote environmental monitoring system with satellite backup & sub-GHz long range telemetry.",
-    link: "/projects/lorawan-industrial-gateway",
-    tag: "IoT / PCB",
+      "Industrial multi-phase energy metering and fault diagnosis system with Raspberry Pi edge integration for Azure Cloud telemetry.",
+    link: "/projects/oppie-box-power-metering-gateway",
+    tag: "Energy / Cloud",
+  },
+  {
+    title: "Temperature Tag: Cold Chain Monitoring & BMS",
+    category: "ESP32 / COLD CHAIN / BMS",
+    specs: "AHT30 Temp/Humidity • BMS Charger • GPRS Gateway",
+    description:
+      "Precision cold chain logger with door sensor counter, onboard BMS battery charger, and RGB status LEDs.",
+    link: "/projects/temperature-tag-cold-chain-bms",
+    tag: "BMS / Sensors",
   },
 ];
 
@@ -35,15 +48,15 @@ export default function Home() {
       <section className="space-y-8 pt-8">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-xs font-mono">
           <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
-          AVAILABLE FOR HARDWARE CONSULTING &amp; FULL-TIME ROLES
+          KENNEDY ODEYO OTIENO — EMBEDDED SYSTEMS &amp; IOT ENGINEER
         </div>
 
         <div className="space-y-4 max-w-4xl">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#ededed] leading-[1.1]">
-            Architecting <span className="text-gradient">Hardware &amp; Embedded</span> Systems from Silicon to Cloud.
+            Engineering <span className="text-gradient">Real-World IoT &amp; Embedded</span> Builds from Circuit to Cloud.
           </h1>
           <p className="text-lg md:text-xl text-[#a1a1aa] max-w-2xl leading-relaxed">
-            I am Ken — an Electrical &amp; IoT Systems Engineer. I specialize in custom multi-layer PCB layout, bare-metal C/C++, FreeRTOS firmware, and low-latency wireless communication.
+            I specialize in custom PCB hardware bring-ups, ESP32/STM32 FreeRTOS firmware, cellular GSM/GPS telemetry (Cargo-Care), multi-phase power metering (Oppie-Box), and cold-chain BMS systems.
           </p>
         </div>
 
@@ -60,7 +73,7 @@ export default function Home() {
             className="flex items-center gap-2 px-6 py-3 rounded-md bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 text-[#ededed] hover:text-[#3b82f6] transition-all"
           >
             <Terminal className="w-4 h-4 text-[#3b82f6]" />
-            <span>Lab Specs &amp; Tech Stack</span>
+            <span>Bio &amp; Contact Details</span>
           </Link>
         </div>
       </section>
@@ -71,9 +84,9 @@ export default function Home() {
           <div className="p-3 rounded-lg bg-[#3b82f6]/10 text-[#3b82f6] w-fit">
             <Cpu className="w-6 h-6" />
           </div>
-          <h3 className="text-lg font-bold text-[#ededed]">Embedded Systems</h3>
+          <h3 className="text-lg font-bold text-[#ededed]">Embedded Systems &amp; RTOS</h3>
           <p className="text-xs text-[#a1a1aa] leading-relaxed">
-            Bare-metal C/C++, STM32, ESP32, FreeRTOS multi-threading, custom bootloaders, and low-level peripheral drivers (SPI, I2C, CAN-FD, UART).
+            FreeRTOS multitasking, ESP32, STM32, ATmega328P, UART/SPI/I2C/OneWire protocols, and custom peripheral drivers.
           </p>
         </div>
 
@@ -81,9 +94,9 @@ export default function Home() {
           <div className="p-3 rounded-lg bg-[#3b82f6]/10 text-[#3b82f6] w-fit">
             <Zap className="w-6 h-6" />
           </div>
-          <h3 className="text-lg font-bold text-[#ededed]">High-Speed PCB Design</h3>
+          <h3 className="text-lg font-bold text-[#ededed]">Power &amp; Energy Metering</h3>
           <p className="text-xs text-[#a1a1aa] leading-relaxed">
-            Multi-layer schematic capture &amp; PCB layout in KiCad/Altium, impedance matching, power integrity, and thermal management for dense boards.
+            Multi-phase AC/DC metering, renewable source integration, voltage/current transformer sensing, and onboard BMS battery chargers.
           </p>
         </div>
 
@@ -91,9 +104,9 @@ export default function Home() {
           <div className="p-3 rounded-lg bg-[#3b82f6]/10 text-[#3b82f6] w-fit">
             <Radio className="w-6 h-6" />
           </div>
-          <h3 className="text-lg font-bold text-[#ededed]">IoT &amp; Wireless RF</h3>
+          <h3 className="text-lg font-bold text-[#ededed]">Cellular &amp; Cloud IoT</h3>
           <p className="text-xs text-[#a1a1aa] leading-relaxed">
-            LoRaWAN, BLE mesh, Sub-GHz communication protocols, MQTT/TLS data pipelines, and ultra-low-power battery energy harvesting node architecture.
+            SIM800C GSM/GPRS telemetry, GPS location tracking, Azure Cloud edge gateways (Raspberry Pi), and Things Cloud IoT integration.
           </p>
         </div>
       </section>
@@ -102,8 +115,8 @@ export default function Home() {
       <section className="space-y-8">
         <div className="flex items-end justify-between border-b border-[#1e293b] pb-4">
           <div>
-            <span className="mono-accent">01 // FEATURED HARDWARE</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#ededed] mt-1">Recent Bring-Ups &amp; Build Logs</h2>
+            <span className="mono-accent">01 // FEATURED HARDWARE BUILDS</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#ededed] mt-1">Real-World Project Archives</h2>
           </div>
           <Link
             href="/projects"
@@ -114,8 +127,8 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredHighlights.map((project, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {pdfFeaturedHighlights.map((project, idx) => (
             <div key={idx} className="card-elevated p-6 flex flex-col justify-between space-y-4">
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-[11px] font-mono text-[#3b82f6]">
@@ -124,7 +137,7 @@ export default function Home() {
                     {project.tag}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-[#ededed]">
+                <h3 className="text-lg font-bold text-[#ededed]">
                   {project.title}
                 </h3>
                 <p className="text-xs text-[#a1a1aa] leading-relaxed">
@@ -133,12 +146,12 @@ export default function Home() {
               </div>
 
               <div className="pt-4 border-t border-[#1e293b]/60 flex items-center justify-between">
-                <span className="text-[11px] font-mono text-[#666666]">
+                <span className="text-[10px] font-mono text-[#666666]">
                   {project.specs}
                 </span>
                 <Link
                   href={project.link}
-                  className="inline-flex items-center gap-1 text-xs font-mono text-[#ededed] hover:text-[#3b82f6] transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#ededed] hover:text-[#3b82f6] transition-colors shrink-0 ml-2"
                 >
                   <span>Specs</span>
                   <ArrowRight className="w-3.5 h-3.5" />

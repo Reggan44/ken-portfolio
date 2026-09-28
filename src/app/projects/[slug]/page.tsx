@@ -8,56 +8,94 @@ import {
   Layers,
   FileText,
   CheckCircle2,
-  AlertCircle,
+  Radio,
+  Battery,
+  ShieldAlert,
 } from "lucide-react";
 
-// Mock Project Database for detail rendering
-const projectData: Record<string, any> = {
-  "stm32-foc-controller": {
-    title: "Dual-Core STM32H7 Motor FOC Vector Controller",
-    tags: ["MCU", "RTOS", "PCB", "Power Electronics"],
+// Mock Project Database matching the PDF Portfolio
+const pdfProjectDetailData: Record<string, any> = {
+  "cargo-care-tracking-solution": {
+    title: "Cargo-Care: Load Manager & Tamper Tracking Solution",
+    tags: ["ESP32", "FreeRTOS", "SIM800C", "IoT", "GPS/GSM", "SPI/I2C/UART"],
+    publishedAt: "2026-09-01",
+    summary:
+      "This battery-powered device tracks the weight and GPS location of cargo carrying goods from loading to dispatch. In case the load is tampered with at any point, automated SMS alerts are dispatched to the owner's phone number. Features onboard OLED screen navigation buttons and dual Wi-Fi Access Point mode.",
+    specs: [
+      { key: "Control Unit", value: "ESP32 (Configured as Wi-Fi Access Point for setup & configuration)" },
+      { key: "Cellular & Location", value: "SIM800C GSM/GPRS Module with UART GPS Location Tracking" },
+      { key: "Telemetry", value: "Real-time load weight, GPS coordinates, timestamp, tamper alerts" },
+      { key: "Operating System", value: "FreeRTOS Preemptive Kernel for real-time multitasking" },
+      { key: "Communication Protocols", value: "Wi-Fi (AP Config), UART (GPS/SIM800C), SPI (SD Storage), I2C (Display)" },
+    ],
+    bom: [
+      { component: "ESP32-WROOM-32D", description: "Dual-core 32-bit LX6 Microcontroller with Wi-Fi & BLE", qty: 1, reference: "U1" },
+      { component: "SIM800C", description: "Quad-band GSM/GPRS Module for SMS & Cellular Telemetry", qty: 1, reference: "U2" },
+      { component: "HX711", description: "24-Bit Analog-to-Digital Converter for Load Cells", qty: 1, reference: "U3" },
+      { component: "SSD1306 OLED", description: "128x64 I2C Graphic Display Module", qty: 1, reference: "DISP1" },
+      { component: "MicroSD Socket", description: "SPI Interface SD Card Slot for Offline Data Logging", qty: 1, reference: "J1" },
+    ],
+    githubRepo: "https://github.com",
+  },
+  "oppie-box-power-metering-gateway": {
+    title: "Oppie-Box: Industrial Power Measurement & Edge Gateway",
+    tags: ["Atmega328P", "Raspberry Pi", "Azure Cloud", "Energy Metering", "OneWire/SPI"],
     publishedAt: "2026-08-15",
     summary:
-      "6-layer high-current PCB designed for brushless DC motor Field Oriented Control (FOC) operating at 48V/50A with dual-core lockstep protection.",
+      "Industrial AC and renewable DC power metering platform with Raspberry Pi edge processing integration. Transmits real-time multi-phase energy metrics, power factor, and fault diagnosis to Microsoft Azure Cloud.",
     specs: [
-      { key: "Microcontroller", value: "STM32H747XI (Cortex-M7 @ 480MHz + Cortex-M4 @ 240MHz)" },
-      { key: "Supply Voltage", value: "24V – 60V DC (72V Transient Peak protection)" },
-      { key: "Phase Current", value: "50A RMS Continuous (100A Peak 5-sec rating)" },
-      { key: "Switching Frequency", value: "20 kHz PWM with synchronized ADC phase current sampling" },
-      { key: "Inverter Topology", value: "3-Phase Half-Bridge with Optically Isolated Gate Drivers" },
-      { key: "Firmware Kernel", value: "FreeRTOS with hard real-time motor control task @ 20kHz" },
-      { key: "Communication", value: "Isolated CAN-FD (5 Mbps) & RS-485 Modbus" },
+      { key: "MCU Computing", value: "Dual Onboard Atmega328P Microcontrollers" },
+      { key: "Edge Gateway", value: "Raspberry Pi Interface for Edge Analytics & Azure Cloud Sync" },
+      { key: "Telemetry", value: "Voltage, current, power per phase, power factor, and phase fault detection" },
+      { key: "Protocols", value: "OneWire (Sensory inputs), SPI (LCD & Flash), UART (Raspberry Pi), I2C (RTC)" },
+      { key: "Human Interface", value: "External HMI + Internal Diagnostic LEDs & Phase Indicators" },
     ],
     bom: [
-      { component: "STM32H747XIH6", description: "Dual-core ARM Cortex-M7/M4 MCU, TFBGA240", qty: 1, reference: "U1" },
-      { component: "DRV8353RS", description: "3-Phase Smart Gate Driver with SPI interface", qty: 1, reference: "U2" },
-      { component: "IAUC120N04S6N013", description: "40V 120A MOSFET 1.3 mΩ, OptiMOS-6", qty: 6, reference: "Q1-Q6" },
-      { component: "INA240A2PWR", description: "High-Port PWM-Rejection Current Sense Amp", qty: 3, reference: "U3-U5" },
-      { component: "SN65HVD230", description: "3.3V CAN Bus Transceiver with ESD Protection", qty: 1, reference: "U6" },
+      { component: "ATmega328P-AU", description: "8-bit AVR MCU 32KB Flash 32-TQFP", qty: 2, reference: "U1, U2" },
+      { component: "Raspberry Pi 4B", description: "Quad-core Cortex-A72 Edge Gateway & Azure Bridge", qty: 1, reference: "BOARD1" },
+      { component: "ZMPT101B", description: "High-precision Voltage Transformer Sensor", qty: 3, reference: "T1-T3" },
+      { component: "SCT-013-000", description: "Non-invasive AC Current Transformer Sensor 100A", qty: 3, reference: "CT1-CT3" },
+      { component: "DS3231", description: "High-Accuracy I2C Real-Time Clock with TCXO", qty: 1, reference: "U3" },
     ],
     githubRepo: "https://github.com",
-    schematicUrl: "https://github.com",
-    cadUrl: "https://github.com",
   },
-  "lorawan-industrial-gateway": {
-    title: "Industrial LoRaWAN Gateway & Sub-GHz Node",
-    tags: ["IoT", "PCB", "Sub-GHz RF", "Solar Energy"],
-    publishedAt: "2026-07-22",
+  "temperature-tag-cold-chain-bms": {
+    title: "Temperature Tag: Cold Chain Monitoring & BMS Solution",
+    tags: ["ESP32", "Cold Chain", "BMS", "I2C/SPI/UART", "GPRS"],
+    publishedAt: "2026-07-20",
     summary:
-      "Ultra-low power remote environmental monitoring system with SX1302 concentrator, satellite failover backup, and solar energy harvesting.",
+      "Battery-powered cold chain logger measuring ambient temperature and humidity. Integrates door contact switch counting, onboard BMS battery charging, automatic voltage source selection, and multi-color RGB diagnostic LEDs.",
     specs: [
-      { key: "RF Concentrator", value: "Semtech SX1302 / SX1250 Sub-GHz Concentrator" },
-      { key: "Bands", value: "868 MHz (EU) / 915 MHz (US) ISM Bands" },
-      { key: "Power Management", value: "MPPT Solar Controller (BQ25713) + LiFePO4 Battery" },
-      { key: "Standby Power", value: "< 12 µA System Deep-Sleep" },
+      { key: "Main Processor", value: "ESP32 NodeMCU Development Module" },
+      { key: "Environmental Sensor", value: "AHT30 Precision I2C Temperature & Humidity Sensor" },
+      { key: "Cellular Gateway", value: "SIM800C in GPRS Mode transmitting TCP/IP data packets" },
+      { key: "BMS & Power", value: "Integrated Battery Management System & Auto Voltage Selector IC" },
+      { key: "Protocols", value: "I2C (AHT30 & RTC), UART (SIM800C), SPI (Flash Memory Logging)" },
     ],
     bom: [
-      { component: "SX1302IMLTRT", description: "Digital Baseband Chip for LoRa Gateway", qty: 1, reference: "U1" },
-      { component: "ESP32-S3-WROOM-1", description: "Wi-Fi + BLE 5.0 MCU Module with 8MB PSRAM", qty: 1, reference: "U2" },
-      { component: "BQ25713RSNR", description: "Buck-Boost NVDC Solar Charge Controller", qty: 1, reference: "U3" },
+      { component: "ESP32 NodeMCU", description: "System Processing Unit & Wireless Transceiver", qty: 1, reference: "U1" },
+      { component: "AHT30", description: "I2C Temperature (±0.3°C) & Humidity (±2% RH) Sensor", qty: 1, reference: "U2" },
+      { component: "TP4056 + Protection", description: "1A Li-Ion Battery Charger with BMS Protection", qty: 1, reference: "U3" },
+      { component: "SIM800C Module", description: "Cellular Modem for GPRS TCP/IP Server Transmission", qty: 1, reference: "U4" },
     ],
     githubRepo: "https://github.com",
-    cadUrl: "https://github.com",
+  },
+  "safe-safari-global-finalist-telemetry": {
+    title: "Safe Safari: Global YESIST12 Finalist Telemetry System",
+    tags: ["ThingsCloud", "IoT", "STM32", "Award Winner"],
+    publishedAt: "2026-06-10",
+    summary:
+      "Award-winning student engineering design competition project. Secured 1st place in Kenya and the East Africa region before advancing as a Global Finalist at the YESIST12 Finals in Malaysia using Things Cloud platform telemetry.",
+    specs: [
+      { key: "Cloud Architecture", value: "Things Cloud IoT Telemetry Platform" },
+      { key: "Awards", value: "1st Place Kenya & East Africa Region / Global YESIST12 Finalist (Malaysia)" },
+      { key: "Enclosure", value: "IP65 Weatherproof Industrial ABS Enclosure" },
+    ],
+    bom: [
+      { component: "STM32F103C8T6", description: "ARM Cortex-M3 32-bit MCU (Blue Pill)", qty: 1, reference: "U1" },
+      { component: "SIM800L", description: "Micro GSM/GPRS Breakout Module", qty: 1, reference: "U2" },
+    ],
+    githubRepo: "https://github.com",
   },
 };
 
@@ -67,7 +105,7 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = projectData[slug];
+  const project = pdfProjectDetailData[slug];
 
   if (!project) {
     notFound();
@@ -84,7 +122,7 @@ export default async function ProjectDetailPage({
         <span>Back to Projects Archive</span>
       </Link>
 
-      {/* Title & Metadata Header */}
+      {/* Header */}
       <div className="space-y-6 border-b border-[#1e293b] pb-8">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t: string) => (
@@ -115,39 +153,17 @@ export default async function ProjectDetailPage({
               className="flex items-center gap-2 px-4 py-2 rounded bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold transition-all"
             >
               <Code2 className="w-4 h-4" />
-              <span>GitHub Repository</span>
-            </a>
-          )}
-          {project.schematicUrl && (
-            <a
-              href={project.schematicUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 text-[#ededed] hover:text-[#3b82f6] transition-all"
-            >
-              <ExternalLink className="w-4 h-4 text-[#3b82f6]" />
-              <span>Schematic (PDF)</span>
-            </a>
-          )}
-          {project.cadUrl && (
-            <a
-              href={project.cadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 text-[#ededed] hover:text-[#3b82f6] transition-all"
-            >
-              <Layers className="w-4 h-4 text-[#3b82f6]" />
-              <span>KiCad / STEP Files</span>
+              <span>Source Code &amp; Hardware Layout</span>
             </a>
           )}
         </div>
       </div>
 
-      {/* Technical Specifications Section */}
+      {/* Specifications Section */}
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-sm font-mono text-[#3b82f6]">
           <Cpu className="w-4 h-4" />
-          <span>01 // HARDWARE SPECIFICATIONS</span>
+          <span>01 // TECHNICAL SPECIFICATIONS &amp; ARCHITECTURE</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
           {project.specs.map((spec: any, i: number) => (
@@ -164,11 +180,11 @@ export default async function ProjectDetailPage({
         </div>
       </section>
 
-      {/* Bill of Materials (BOM) Section */}
+      {/* Bill of Materials (BOM) */}
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-sm font-mono text-[#3b82f6]">
           <FileText className="w-4 h-4" />
-          <span>02 // BILL OF MATERIALS (CRITICAL PARTS)</span>
+          <span>02 // BILL OF MATERIALS (PRIMARY HARDWARE)</span>
         </div>
         <div className="overflow-x-auto rounded border border-[#1e293b] bg-[#0a0a0a]">
           <table className="w-full text-left text-xs font-mono">
@@ -191,31 +207,6 @@ export default async function ProjectDetailPage({
               ))}
             </tbody>
           </table>
-        </div>
-      </section>
-
-      {/* Design Narrative / MDX Content Block Placeholder */}
-      <section className="space-y-4 border-t border-[#1e293b] pt-8">
-        <div className="flex items-center gap-2 text-sm font-mono text-[#3b82f6]">
-          <CheckCircle2 className="w-4 h-4" />
-          <span>03 // BRING-UP &amp; VALIDATION NOTES</span>
-        </div>
-        <div className="card-elevated p-6 space-y-4 text-sm text-[#a1a1aa] leading-relaxed font-sans">
-          <p>
-            The main challenge during initial board bring-up was controlling ground bounce during 50A phase switching transitions. By implementing dedicated Kelvin sense traces directly to the shunt resistors and separating signal ground from power ground planes via a single point star connection under the INA240 current sense ICs, SNR improved by 14 dB.
-          </p>
-          <div className="p-4 rounded bg-[#0a0a0a] border border-[#3b82f6]/30 font-mono text-xs text-[#ededed] space-y-2">
-            <div className="text-[#3b82f6] font-semibold">// PWM Interrupt Handler Logic</div>
-            <code>
-              {`void TIM1_UP_IRQHandler(void) {
-    if (TIM1->SR & TIM_SR_UIF) {
-        ADC1_Trigger_Phase_Current_Sample();
-        FOC_Calculate_Park_Transforms();
-        TIM1->SR = ~TIM_SR_UIF;
-    }
-}`}
-            </code>
-          </div>
         </div>
       </section>
     </div>
