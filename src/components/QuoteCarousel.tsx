@@ -43,12 +43,13 @@ export function QuoteCarousel() {
 
   const current = testimonials[currentIndex];
 
+
   return (
-    <section className="py-14 px-6 md:px-12 bg-white text-zinc-900 rounded-3xl my-12 border border-zinc-200/80 shadow-md relative overflow-hidden">
+    <section className="py-14 px-6 md:px-12 bg-white dark:bg-zinc-900/90 text-zinc-900 dark:text-zinc-100 rounded-3xl my-12 border border-zinc-200/80 dark:border-zinc-800 shadow-md relative overflow-hidden transition-colors duration-250">
       <div className="max-w-4xl mx-auto space-y-6 relative z-10">
         {/* Header Badge */}
-        <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#783fc6]/10 text-[#783fc6] text-xs font-mono font-bold">
+        <div className="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 text-xs font-mono font-bold">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>{current.tag}</span>
           </div>
@@ -58,14 +59,14 @@ export function QuoteCarousel() {
             <button
               onClick={handlePrev}
               aria-label="Previous Testimonial"
-              className="w-10 h-10 rounded-full border border-zinc-200 bg-zinc-50 text-zinc-800 flex items-center justify-center hover:bg-[#783fc6] hover:text-white hover:border-[#783fc6] transition-all"
+              className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white hover:border-indigo-600 transition-all cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
               aria-label="Next Testimonial"
-              className="w-10 h-10 rounded-full border border-zinc-200 bg-zinc-50 text-zinc-800 flex items-center justify-center hover:bg-[#783fc6] hover:text-white hover:border-[#783fc6] transition-all"
+              className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white hover:border-indigo-600 transition-all cursor-pointer"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -74,16 +75,16 @@ export function QuoteCarousel() {
 
         {/* Quote Content */}
         <div className="space-y-4">
-          <Quote className="w-8 h-8 text-[#783fc6] opacity-70" />
-          <p className="text-xl sm:text-2xl font-serif leading-relaxed text-zinc-900 italic">
+          <Quote className="w-8 h-8 text-indigo-600 dark:text-indigo-400 opacity-70" />
+          <p className="text-xl sm:text-2xl font-serif leading-relaxed text-zinc-900 dark:text-zinc-100 italic">
             "{current.quote}"
           </p>
 
           <div className="pt-2">
-            <div className="text-sm font-bold text-zinc-900 font-mono">
+            <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100 font-mono">
               {current.author}
             </div>
-            <div className="text-xs text-zinc-500 font-mono">
+            <div className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
               {current.role}
             </div>
           </div>
@@ -95,10 +96,10 @@ export function QuoteCarousel() {
             <button
               key={i}
               onClick={() => setCurrentIndex(i)}
-              className={`h-2 rounded-full transition-all ${
+              className={`h-2 rounded-full transition-all cursor-pointer ${
                 i === currentIndex
-                  ? "w-8 bg-[#783fc6]"
-                  : "w-2 bg-zinc-200 hover:bg-zinc-400"
+                  ? "w-8 bg-indigo-600 dark:bg-indigo-400"
+                  : "w-2 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-500"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -108,3 +109,4 @@ export function QuoteCarousel() {
     </section>
   );
 }
+

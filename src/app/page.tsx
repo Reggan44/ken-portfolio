@@ -3,10 +3,8 @@ import {
   Cpu,
   Zap,
   ArrowRight,
-  Terminal,
   Radio,
   MapPin,
-  Code2,
 } from "lucide-react";
 import { QuoteCarousel } from "@/components/QuoteCarousel";
 
@@ -59,42 +57,43 @@ const telemetryMetrics = [
 export default function Home() {
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-5xl mx-auto space-y-16">
-      {/* Ultra-Minimal Hero Section */}
+      {/* Hero Section */}
       <section className="space-y-6 pt-4">
-        {/* Availability Badge */}
-        <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-zinc-600">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 status-pulse-green" />
-            Available for Embedded &amp; IoT Projects
+        {/* Availability & Location */}
+        <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-600 dark:text-zinc-400">
+          <span className="flex items-center gap-2 font-medium text-zinc-800 dark:text-zinc-200">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            Available for Embedded &amp; IoT Work
           </span>
-          <span className="flex items-center gap-1 text-zinc-500">
-            <MapPin className="w-3.5 h-3.5 text-zinc-400" />
+          <span className="text-zinc-300 dark:text-zinc-700">•</span>
+          <span className="flex items-center gap-1">
+            <MapPin className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
             Nairobi, Kenya
           </span>
         </div>
 
-        {/* Concise Hero Headline */}
-        <div className="space-y-3 max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 leading-[1.1]">
+        {/* Hero Headline */}
+        <div className="space-y-4 max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1]">
             Building Intelligent Embedded Hardware &amp; IoT Systems.
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 leading-relaxed max-w-2xl">
-            I am <strong className="text-zinc-900">Kennedy Odeyo Otieno</strong> — an Electrical &amp; Embedded Systems Engineer. I specialize in real-time load manager tracking (Cargo-Care), industrial power metering (Oppie-Box), cold-chain loggers, and edge gateways.
+          <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
+            I am <strong className="text-zinc-950 dark:text-zinc-100">Kennedy Odeyo Otieno</strong> — an Electrical &amp; Embedded Systems Engineer. I specialize in real-time load manager tracking (Cargo-Care), industrial power metering (Oppie-Box), cold-chain loggers, and edge gateways.
           </p>
         </div>
 
-        {/* Minimal Hero Actions */}
+        {/* Hero Actions */}
         <div className="flex flex-wrap gap-3 pt-1 font-mono text-xs">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-medium transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 font-medium transition-all shadow-xs"
           >
             <span>View Projects</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <a
             href="mailto:kenodeyo@gmail.com"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-800 font-medium transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-zinc-900 border border-zinc-300 hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800 font-medium transition-all shadow-xs"
           >
             <span>Contact Me</span>
           </a>
@@ -105,11 +104,11 @@ export default function Home() {
       <section className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
         {telemetryMetrics.map((metric, i) => (
           <div key={i} className="card-elevated p-4 text-center space-y-1">
-            <div className="text-2xl sm:text-3xl font-bold text-zinc-900 font-mono">
+            <div className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50 font-mono">
               {metric.count}
             </div>
-            <div className="text-xs font-semibold text-zinc-800 font-mono">{metric.label}</div>
-            <div className="text-[11px] text-zinc-500 font-mono">{metric.desc}</div>
+            <div className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 font-mono">{metric.label}</div>
+            <div className="text-[11px] text-zinc-600 dark:text-zinc-400 font-mono">{metric.desc}</div>
           </div>
         ))}
       </section>
@@ -117,31 +116,31 @@ export default function Home() {
       {/* Domain Expertise Pillars */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="card-elevated p-5 space-y-2">
-          <div className="p-2.5 rounded-lg bg-indigo-50 text-indigo-600 w-fit">
+          <div className="p-2.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 w-fit">
             <Cpu className="w-5 h-5" />
           </div>
-          <h3 className="text-base font-bold text-zinc-900">Embedded Systems &amp; RTOS</h3>
-          <p className="text-xs text-zinc-600 leading-relaxed">
+          <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Embedded Systems &amp; RTOS</h3>
+          <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
             FreeRTOS multitasking, ESP32, STM32, ATmega328P, UART/SPI/I2C/OneWire protocols, and custom drivers.
           </p>
         </div>
 
         <div className="card-elevated p-5 space-y-2">
-          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 w-fit">
+          <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 w-fit">
             <Zap className="w-5 h-5" />
           </div>
-          <h3 className="text-base font-bold text-zinc-900">Power &amp; Energy Metering</h3>
-          <p className="text-xs text-zinc-600 leading-relaxed">
+          <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Power &amp; Energy Metering</h3>
+          <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
             Multi-phase AC/DC metering, renewable integration, voltage/current transformers, and BMS chargers.
           </p>
         </div>
 
         <div className="card-elevated p-5 space-y-2">
-          <div className="p-2.5 rounded-lg bg-sky-50 text-sky-600 w-fit">
+          <div className="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 w-fit">
             <Radio className="w-5 h-5" />
           </div>
-          <h3 className="text-base font-bold text-zinc-900">Cellular &amp; Cloud IoT</h3>
-          <p className="text-xs text-zinc-600 leading-relaxed">
+          <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Cellular &amp; Cloud IoT</h3>
+          <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
             SIM800C GSM/GPRS telemetry, GPS location tracking, Azure Cloud edge gateways (Raspberry Pi), and Things Cloud.
           </p>
         </div>
@@ -149,14 +148,14 @@ export default function Home() {
 
       {/* Featured Projects Showcase */}
       <section className="space-y-6">
-        <div className="flex items-end justify-between border-b border-zinc-200 pb-3">
+        <div className="flex items-end justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
           <div>
-            <span className="font-mono text-xs text-indigo-600 font-semibold uppercase tracking-wider">01 // FEATURED HARDWARE BUILDS</span>
-            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mt-0.5">Projects Showcase</h2>
+            <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">01 // FEATURED HARDWARE BUILDS</span>
+            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 mt-0.5">Projects Showcase</h2>
           </div>
           <Link
             href="/projects"
-            className="hidden sm:flex items-center gap-1 text-xs font-mono text-indigo-600 font-medium hover:underline"
+            className="hidden sm:flex items-center gap-1 text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold hover:underline"
           >
             <span>All Projects</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -168,26 +167,26 @@ export default function Home() {
             <article key={idx} className="card-elevated p-6 flex flex-col justify-between space-y-4 group">
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-indigo-600 font-semibold">{project.category}</span>
-                  <span className="px-2 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200">
+                  <span className="text-indigo-600 dark:text-indigo-400 font-bold">{project.category}</span>
+                  <span className="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/90 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
                     {project.tag}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-zinc-900 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   <Link href={project.link}>{project.title}</Link>
                 </h3>
-                <p className="text-xs text-zinc-600 leading-relaxed">
+                <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-zinc-100 flex items-center justify-between">
-                <span className="text-[11px] font-mono text-zinc-400">
+              <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
+                <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
                   {project.specs}
                 </span>
                 <Link
                   href={project.link}
-                  className="inline-flex items-center gap-1 text-xs font-mono text-zinc-900 font-medium hover:text-indigo-600 transition-colors shrink-0 ml-2"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-zinc-900 dark:text-zinc-100 font-bold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shrink-0 ml-2"
                 >
                   <span>Specs</span>
                   <ArrowRight className="w-3.5 h-3.5" />

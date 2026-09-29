@@ -86,33 +86,33 @@ export default function ProjectsPage() {
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-6xl mx-auto space-y-12">
       {/* Header */}
-      <div className="space-y-4 border-b border-zinc-200 pb-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-semibold">
-          <Cpu className="w-3.5 h-3.5 text-indigo-600" />
+      <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800 pb-8">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold">
+          <Cpu className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
           HARDWARE &amp; EMBEDDED SYSTEMS ARCHIVE
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-zinc-900">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50">
           Projects &amp; Board Bring-Ups
         </h1>
-        <p className="text-base md:text-lg text-zinc-600 max-w-2xl leading-relaxed">
+        <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
           Comprehensive technical documentation and actual hardware images of builds by Kennedy Odeyo Otieno — custom PCBs, RTOS firmware, cellular IoT, and power metering.
         </p>
       </div>
 
       {/* Filter Badges */}
-      <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-zinc-500">
-        <div className="flex items-center gap-1.5 mr-2 text-zinc-900 font-bold">
-          <Filter className="w-3.5 h-3.5 text-indigo-600" />
+      <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="flex items-center gap-1.5 mr-2 text-zinc-900 dark:text-zinc-200 font-bold">
+          <Filter className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
           <span>Filter:</span>
         </div>
         {["ALL", "ESP32", "FreeRTOS", "Energy Metering", "Cold Chain", "GSM/GPS", "BMS"].map(
           (tag, i) => (
             <button
               key={tag}
-              className={`px-3.5 py-1.5 rounded-full border transition-all ${
+              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer ${
                 i === 0
                   ? "bg-indigo-600 border-indigo-600 text-white font-bold"
-                  : "bg-white border-zinc-200 text-zinc-600 hover:border-indigo-600 hover:text-indigo-600"
+                  : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400"
               }`}
             >
               {tag}
@@ -126,10 +126,10 @@ export default function ProjectsPage() {
         {pdfProjects.map((project) => (
           <article
             key={project._id}
-            className="card-elevated p-6 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 group hover:border-indigo-600"
+            className="card-elevated p-5 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 group hover:border-indigo-600 dark:hover:border-indigo-500"
           >
             {/* Image Preview Thumbnail from PDF */}
-            <div className="md:col-span-4 relative h-56 md:h-full min-h-[200px] rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200">
+            <div className="md:col-span-4 relative h-48 sm:h-56 md:h-full min-h-[180px] rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
               <Image
                 src={project.mainImage}
                 alt={project.title}
@@ -141,33 +141,33 @@ export default function ProjectsPage() {
             {/* Project Content */}
             <div className="md:col-span-8 space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-0.5 rounded bg-indigo-50 border border-indigo-200 text-indigo-700 text-[11px] font-mono font-semibold"
+                      className="px-2 sm:px-2.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-[10px] sm:text-[11px] font-mono font-semibold"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
-                <h2 className="text-2xl font-bold text-zinc-900 group-hover:text-indigo-600 transition-colors">
+                <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   <Link href={`/projects/${project.slug}`}>{project.title}</Link>
                 </h2>
-                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   {project.summary}
                 </p>
               </div>
 
               {/* Specs Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 font-mono text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 font-mono text-[11px] sm:text-xs">
                 {project.specs.slice(0, 4).map((spec, i) => (
                   <div
                     key={i}
-                    className="p-2.5 rounded bg-zinc-50 border border-zinc-200/80 flex justify-between gap-2"
+                    className="p-2 sm:p-2.5 rounded bg-zinc-50 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 flex flex-col sm:flex-row sm:justify-between gap-0.5 sm:gap-2"
                   >
-                    <span className="text-zinc-400">{spec.key}:</span>
-                    <span className="text-zinc-900 font-semibold text-right">
+                    <span className="text-zinc-400 dark:text-zinc-500">{spec.key}:</span>
+                    <span className="text-zinc-900 dark:text-zinc-200 font-semibold sm:text-right">
                       {spec.value}
                     </span>
                   </div>
@@ -175,12 +175,12 @@ export default function ProjectsPage() {
               </div>
 
               <div className="pt-2 flex items-center justify-between">
-                <span className="text-xs font-mono text-zinc-400">
+                <span className="text-[10px] sm:text-xs font-mono text-zinc-400 dark:text-zinc-500">
                   Published {project.publishedAt}
                 </span>
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="inline-flex items-center gap-2 text-xs font-mono text-indigo-600 font-bold hover:underline"
+                  className="inline-flex items-center gap-2 text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold hover:underline"
                 >
                   <span>View Photos &amp; Specs</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -193,3 +193,4 @@ export default function ProjectsPage() {
     </div>
   );
 }
+

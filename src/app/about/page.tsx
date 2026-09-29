@@ -50,31 +50,31 @@ export default function AboutPage() {
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-5xl mx-auto space-y-16">
       {/* Bio Header */}
-      <div className="space-y-6 border-b border-[#1e293b] pb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-xs font-mono">
+      <div className="space-y-6 border-b border-zinc-200 dark:border-zinc-800 pb-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold">
           <User className="w-3.5 h-3.5" />
           EMBEDDED SYSTEMS &amp; INTERNET OF THINGS (IOT) ENGINEER
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold text-[#ededed]">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-zinc-900 dark:text-zinc-50">
           Kennedy Odeyo Otieno
         </h1>
-        <p className="text-base sm:text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
+        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
           I am an Embedded Systems and IoT Engineer specializing in real-world hardware bring-ups. My work spans real-time load manager tracking (Cargo-Care), industrial power metering and edge computing (Oppie-Box), cold-chain environmental sensing with BMS, and competitive IoT solutions.
         </p>
 
         <div className="flex flex-wrap gap-4 pt-2 font-mono text-xs">
           <a
             href="mailto:kenodeyo@gmail.com"
-            className="flex items-center gap-2 px-5 py-2.5 rounded bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all shadow-sm"
           >
             <Mail className="w-4 h-4" />
             <span>kenodeyo@gmail.com</span>
           </a>
           <a
             href="tel:+254793036309"
-            className="flex items-center gap-2 px-5 py-2.5 rounded bg-[#0a0a0a] border border-[#1e293b] hover:border-[#3b82f6]/50 text-[#ededed] hover:text-[#3b82f6] transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-600 dark:hover:border-indigo-400 text-zinc-800 dark:text-zinc-200 transition-all shadow-sm"
           >
-            <Phone className="w-4 h-4 text-[#3b82f6]" />
+            <Phone className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             <span>+254-793036309</span>
           </a>
         </div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
       {/* Hardware Systems & Skills */}
       <section className="space-y-6">
-        <div className="flex items-center gap-2 font-mono text-sm text-[#3b82f6]">
+        <div className="flex items-center gap-2 font-mono text-sm text-indigo-600 dark:text-indigo-400 font-bold">
           <Wrench className="w-4 h-4" />
           <span>01 // HARDWARE SYSTEMS &amp; EXPERTISE</span>
         </div>
@@ -90,12 +90,12 @@ export default function AboutPage() {
           {labEquipment.map((equip, idx) => (
             <div
               key={idx}
-              className="card-elevated p-5 space-y-1.5 hover:border-[#3b82f6]/40"
+              className="card-elevated p-5 space-y-1.5 hover:border-indigo-600 dark:hover:border-indigo-500"
             >
-              <div className="text-xs font-mono text-[#3b82f6] font-semibold">
+              <div className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-semibold">
                 {equip.name}
               </div>
-              <div className="text-xs text-[#a1a1aa] font-mono leading-relaxed">
+              <div className="text-xs text-zinc-600 dark:text-zinc-400 font-mono leading-relaxed">
                 {equip.spec}
               </div>
             </div>
@@ -105,21 +105,21 @@ export default function AboutPage() {
 
       {/* Accomplishments & Project History */}
       <section className="space-y-6">
-        <div className="flex items-center gap-2 font-mono text-sm text-[#3b82f6]">
+        <div className="flex items-center gap-2 font-mono text-sm text-indigo-600 dark:text-indigo-400 font-bold">
           <Award className="w-4 h-4" />
           <span>02 // KEY HIGHLIGHTS &amp; COMPETITIONS</span>
         </div>
-        <div className="space-y-6 border-l-2 border-[#1e293b] pl-6 ml-2">
+        <div className="space-y-6 border-l-2 border-zinc-200 dark:border-zinc-800 pl-6 ml-2">
           {careerTimeline.map((item, idx) => (
             <div key={idx} className="relative space-y-2 group">
-              <div className="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-[#3b82f6] border-4 border-[#050505]" />
-              <div className="text-xs font-mono text-[#3b82f6]">
+              <div className="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-indigo-400 border-4 border-white dark:border-zinc-950" />
+              <div className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-semibold">
                 {item.period}
               </div>
-              <h3 className="text-lg font-bold text-[#ededed]">
-                {item.role} <span className="text-[#a1a1aa] font-normal">({item.company})</span>
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                {item.role} <span className="text-zinc-500 dark:text-zinc-400 font-normal">({item.company})</span>
               </h3>
-              <p className="text-xs text-[#a1a1aa] leading-relaxed max-w-2xl">
+              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
                 {item.details}
               </p>
             </div>
@@ -129,3 +129,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

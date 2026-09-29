@@ -45,15 +45,15 @@ export default function BlogIndexPage() {
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-5xl mx-auto space-y-12">
       {/* Header */}
-      <div className="space-y-4 border-b border-[#1e293b] pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] text-xs font-mono">
+      <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800 pb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold">
           <BookOpen className="w-3.5 h-3.5" />
           TECHNICAL PAPERS &amp; TUTORIALS
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#ededed]">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50">
           Articles &amp; Engineering Notes
         </h1>
-        <p className="text-base md:text-lg text-[#a1a1aa] max-w-2xl leading-relaxed">
+        <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
           In-depth technical guides covering control theory, MCU firmware optimization, PCB layout principles, and hardware bring-up lessons.
         </p>
       </div>
@@ -63,20 +63,20 @@ export default function BlogIndexPage() {
         {samplePosts.map((post) => (
           <article
             key={post._id}
-            className="card-elevated p-8 space-y-4 group hover:border-[#3b82f6]/40"
+            className="card-elevated p-8 space-y-4 group hover:border-indigo-600 dark:hover:border-indigo-500"
           >
-            <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#3b82f6]">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-indigo-600 dark:text-indigo-400">
               <div className="flex items-center gap-2">
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-0.5 rounded bg-[#3b82f6]/10 border border-[#3b82f6]/20"
+                    className="px-2.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/60 font-semibold"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="flex items-center gap-3 text-[#666666]">
+              <div className="flex items-center gap-3 text-zinc-400 dark:text-zinc-500">
                 <span>{post.publishedAt}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
@@ -86,18 +86,18 @@ export default function BlogIndexPage() {
               </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-[#ededed] group-hover:text-[#3b82f6] transition-colors leading-snug">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
               <Link href={`/blog/${post.slug}`}>{post.title}</Link>
             </h2>
 
-            <p className="text-sm text-[#a1a1aa] leading-relaxed">
+            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               {post.summary}
             </p>
 
             <div className="pt-2 flex justify-end">
               <Link
                 href={`/blog/${post.slug}`}
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#3b82f6] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold hover:underline"
               >
                 <span>Read Full Article</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -109,3 +109,4 @@ export default function BlogIndexPage() {
     </div>
   );
 }
+

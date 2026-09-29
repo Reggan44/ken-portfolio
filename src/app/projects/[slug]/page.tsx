@@ -142,30 +142,30 @@ export default async function ProjectDetailPage({
       {/* Back Button */}
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-xs font-mono text-zinc-500 hover:text-indigo-600 transition-colors"
+        className="inline-flex items-center gap-2 text-xs font-mono text-zinc-500 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
       >
         <ArrowLeft className="w-3.5 h-3.5" />
         <span>Back to Projects Archive</span>
       </Link>
 
       {/* Header */}
-      <div className="space-y-6 border-b border-zinc-200 pb-8">
+      <div className="space-y-6 border-b border-zinc-200 dark:border-zinc-800 pb-8">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t: string) => (
             <span
               key={t}
-              className="px-2.5 py-1 rounded bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono font-semibold"
+              className="px-2.5 py-1 rounded bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold"
             >
               {t}
             </span>
           ))}
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 leading-tight">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 leading-tight">
           {project.title}
         </h1>
 
-        <p className="text-base sm:text-lg text-zinc-600 leading-relaxed max-w-3xl">
+        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
           {project.summary}
         </p>
 
@@ -176,7 +176,7 @@ export default async function ProjectDetailPage({
               href={project.githubRepo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-medium transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-medium transition-all shadow-sm"
             >
               <Code2 className="w-4 h-4" />
               <span>Source Code &amp; Hardware Layout</span>
@@ -188,14 +188,14 @@ export default async function ProjectDetailPage({
       {/* Actual PDF Photo Gallery */}
       {project.images && project.images.length > 0 && (
         <section className="space-y-4">
-          <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 font-bold">
+          <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
             <Layers className="w-4 h-4" />
             <span>01 // ACTUAL HARDWARE &amp; BOARD BRING-UP PHOTOS</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {project.images.map((img: any, i: number) => (
               <div key={i} className="card-elevated overflow-hidden group">
-                <div className="relative h-64 w-full bg-zinc-100 border-b border-zinc-100">
+                <div className="relative h-64 w-full bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
                   <Image
                     src={img.src}
                     alt={img.caption}
@@ -203,7 +203,7 @@ export default async function ProjectDetailPage({
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="p-3 text-xs font-mono text-zinc-600 bg-white">
+                <div className="p-3 text-xs font-mono text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900">
                   {img.caption}
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default async function ProjectDetailPage({
 
       {/* Specifications Section */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 font-bold">
+        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
           <Cpu className="w-4 h-4" />
           <span>02 // TECHNICAL SPECIFICATIONS &amp; ARCHITECTURE</span>
         </div>
@@ -222,10 +222,10 @@ export default async function ProjectDetailPage({
           {project.specs.map((spec: any, i: number) => (
             <div
               key={i}
-              className="p-3 rounded-lg bg-white border border-zinc-200 flex justify-between gap-3 shadow-sm"
+              className="p-3 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex justify-between gap-3 shadow-sm"
             >
-              <span className="text-zinc-400">{spec.key}:</span>
-              <span className="text-zinc-900 font-semibold text-right">
+              <span className="text-zinc-400 dark:text-zinc-500">{spec.key}:</span>
+              <span className="text-zinc-900 dark:text-zinc-200 font-semibold text-right">
                 {spec.value}
               </span>
             </div>
@@ -235,13 +235,13 @@ export default async function ProjectDetailPage({
 
       {/* Bill of Materials (BOM) */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 font-bold">
+        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
           <FileText className="w-4 h-4" />
           <span>03 // BILL OF MATERIALS (PRIMARY HARDWARE)</span>
         </div>
-        <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm">
+        <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
           <table className="w-full text-left text-xs font-mono">
-            <thead className="border-b border-zinc-200 bg-zinc-50 text-indigo-700 font-bold">
+            <thead className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/90 text-indigo-700 dark:text-indigo-400 font-bold">
               <tr>
                 <th className="p-3">Ref</th>
                 <th className="p-3">Component</th>
@@ -249,13 +249,13 @@ export default async function ProjectDetailPage({
                 <th className="p-3 text-right">Qty</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-100 text-zinc-600">
+            <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-zinc-600 dark:text-zinc-400">
               {project.bom.map((row: any, i: number) => (
-                <tr key={i} className="hover:bg-zinc-50 transition-colors">
-                  <td className="p-3 text-indigo-600 font-bold">{row.reference}</td>
-                  <td className="p-3 font-semibold text-zinc-900">{row.component}</td>
+                <tr key={i} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                  <td className="p-3 text-indigo-600 dark:text-indigo-400 font-bold">{row.reference}</td>
+                  <td className="p-3 font-semibold text-zinc-900 dark:text-zinc-100">{row.component}</td>
                   <td className="p-3">{row.description}</td>
-                  <td className="p-3 text-right text-zinc-900 font-bold">{row.qty}</td>
+                  <td className="p-3 text-right text-zinc-900 dark:text-zinc-100 font-bold">{row.qty}</td>
                 </tr>
               ))}
             </tbody>
@@ -265,3 +265,4 @@ export default async function ProjectDetailPage({
     </div>
   );
 }
+

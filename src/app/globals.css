@@ -1,49 +1,55 @@
 @import "tailwindcss";
 
+@variant dark (.dark &);
+
 /* ──────────────────────────────────────────────
-   Kennedy Odeyo Otieno Portfolio — Minimalist Design System
-   Inspired by my-port-folio-three-psi.vercel.app
+   Kennedy Odeyo Otieno Portfolio — Design System
+   Dual Theme System: Light (Porcelain) & Dark (Deep Tech)
+   Auto-detects device theme via next-themes (system mode)
    ────────────────────────────────────────────── */
 
 :root {
-  /* Crisp Porcelain Palette */
+  /* Light Mode Palette */
   --background: #fafafa;
   --background-card: #ffffff;
-  
-  --foreground: #18181b;
-  --foreground-muted: #71717a;
-
-  /* Minimal Palette Accents */
-  --accent-primary: #6366f1;
-  --accent-emerald: #10b981;
-
+  --foreground: #09090b;
+  --foreground-muted: #52525b;
+  --accent-primary: #4f46e5;
   --border-subtle: #e4e4e7;
   --border-hover: #a1a1aa;
-
-  /* Typography */
-  --font-display: var(--font-space-grotesk), "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
+  --scrollbar-thumb: #d4d4d8;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-background-card: var(--background-card);
-  --color-foreground: var(--foreground);
-  --color-foreground-muted: var(--foreground-muted);
-  --color-border-subtle: var(--border-subtle);
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
+html.dark,
+[data-theme='dark'] {
+  /* Dark Mode Palette */
+  --background: #050505;
+  --background-card: #0c0c0e;
+  --foreground: #f4f4f5;
+  --foreground-muted: #a1a1aa;
+  --accent-primary: #6366f1;
+  --border-subtle: #1e1e24;
+  --border-hover: #3f3f46;
+  --scrollbar-thumb: #27272a;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-/* ── Base ─────────────────────────────────────── */
+html {
+  background-color: var(--background);
+  color: var(--foreground);
+  color-scheme: light dark;
+}
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ── Selection ────────────────────────────────── */
@@ -56,7 +62,7 @@ body {
 /* ── Custom Scrollbar ────────────────────────── */
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -64,31 +70,32 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e4e4e7;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: var(--border-hover);
 }
 
 /* ── Minimal Card Systems ──────────────────────── */
 
 .card-elevated {
-  background: var(--background-card);
+  background-color: var(--background-card);
   border: 1px solid var(--border-subtle);
   border-radius: 16px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow);
 }
 
 .card-elevated:hover {
-  border-color: #a1a1aa;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--border-hover);
+  box-shadow: var(--card-shadow-hover);
   transform: translateY(-2px);
 }
 
-/* Minimal Subtle Pulse */
+/* ── Status Pulse ─────────────────────────────── */
+
 .status-pulse-green {
   box-shadow: 0 0 6px #10b981;
   animation: pulseGreen 2s infinite ease-in-out;
@@ -101,4 +108,45 @@ body {
   50% {
     opacity: 0.4;
   }
+}
+
+/* ── Mobile Menu Animations ───────────────────── */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation: slideDown 0.2s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.15s ease-out;
+}
+
+/* ── Responsive Breakpoint: xs (480px+) ───────── */
+
+@media (min-width: 480px) {
+  .xs\:inline { display: inline; }
+  .xs\:hidden { display: none; }
+}
+
+@media (max-width: 479px) {
+  .hidden.xs\:inline { display: none; }
 }
