@@ -13,6 +13,7 @@ import {
   Battery,
   ShieldAlert,
 } from "lucide-react";
+import { client, PROJECT_BY_SLUG_QUERY, urlFor } from "@/lib/sanity/client";
 
 // Real PDF Project Detail Database with Actual Image Galleries
 const pdfProjectDetailData: Record<string, any> = {
@@ -42,7 +43,7 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "SSD1306 OLED", description: "128x64 I2C Graphic Display Module", qty: 1, reference: "DISP1" },
       { component: "MicroSD Socket", description: "SPI Interface SD Card Slot for Offline Data Logging", qty: 1, reference: "J1" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
   },
   "oppie-box-power-metering-gateway": {
     title: "Oppie-Box: Industrial Power Measurement & Edge Gateway",
@@ -70,7 +71,7 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "SCT-013-000", description: "Non-invasive AC Current Transformer Sensor 100A", qty: 3, reference: "CT1-CT3" },
       { component: "DS3231", description: "High-Accuracy I2C Real-Time Clock with TCXO", qty: 1, reference: "U3" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
   },
   "temperature-tag-cold-chain-bms": {
     title: "Temperature Tag: Cold Chain Monitoring & BMS Solution",
@@ -97,7 +98,7 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "TP4056 + Protection", description: "1A Li-Ion Battery Charger with BMS Protection", qty: 1, reference: "U3" },
       { component: "SIM800C Module", description: "Cellular Modem for GPRS TCP/IP Server Transmission", qty: 1, reference: "U4" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
   },
   "safe-safari-global-finalist-telemetry": {
     title: "Safe Safari: Global YESIST12 Finalist Telemetry System",
@@ -121,9 +122,20 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "STM32F103C8T6", description: "ARM Cortex-M3 32-bit MCU (Blue Pill)", qty: 1, reference: "U1" },
       { component: "SIM800L", description: "Micro GSM/GPRS Breakout Module", qty: 1, reference: "U2" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
   },
 };
+
+function getImageUrl(image: any): string {
+  if (!image) return "";
+  if (typeof image === "string") return image;
+  if (image.src) return image.src;
+  try {
+    return urlFor(image).url();
+  } catch {
+    return "";
+  }
+}
 
 export default async function ProjectDetailPage({
   params,
@@ -131,11 +143,31 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = pdfProjectDetailData[slug];
+  let project: any = null;
+
+  try {
+    project = await client.fetch(PROJECT_BY_SLUG_QUERY, { slug });
+  } catch (err) {
+    console.error("Failed to fetch project detail from Sanity:", err);
+  }
+
+  if (!project) {
+    project = pdfProjectDetailData[slug];
+  }
 
   if (!project) {
     notFound();
   }
+
+  const displayImages = project.gallery && project.gallery.length > 0
+    ? project.gallery.map((img: any) => ({
+        src: getImageUrl(img.asset || img),
+        caption: img.caption || img.alt || project.title,
+      }))
+    : (project.images || []).map((img: any) => ({
+        src: getImageUrl(img),
+        caption: img.caption || project.title,
+      }));
 
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-5xl mx-auto space-y-12">
@@ -151,7 +183,7 @@ export default async function ProjectDetailPage({
       {/* Header */}
       <div className="space-y-6 border-b border-zinc-200 dark:border-zinc-800 pb-8">
         <div className="flex flex-wrap gap-2">
-          {project.tags.map((t: string) => (
+          {(project.tags || []).map((t: string) => (
             <span
               key={t}
               className="px-2.5 py-1 rounded bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold"
@@ -185,15 +217,15 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      {/* Actual PDF Photo Gallery */}
-      {project.images && project.images.length > 0 && (
+      {/* Actual Photo Gallery */}
+      {displayImages && displayImages.length > 0 && (
         <section className="space-y-4">
           <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
             <Layers className="w-4 h-4" />
             <span>01 // ACTUAL HARDWARE &amp; BOARD BRING-UP PHOTOS</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {project.images.map((img: any, i: number) => (
+            {displayImages.map((img: any, i: number) => (
               <div key={i} className="card-elevated overflow-hidden group">
                 <div className="relative h-64 w-full bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
                   <Image
@@ -213,55 +245,59 @@ export default async function ProjectDetailPage({
       )}
 
       {/* Specifications Section */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
-          <Cpu className="w-4 h-4" />
-          <span>02 // TECHNICAL SPECIFICATIONS &amp; ARCHITECTURE</span>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
-          {project.specs.map((spec: any, i: number) => (
-            <div
-              key={i}
-              className="p-3 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex justify-between gap-3 shadow-sm"
-            >
-              <span className="text-zinc-400 dark:text-zinc-500">{spec.key}:</span>
-              <span className="text-zinc-900 dark:text-zinc-200 font-semibold text-right">
-                {spec.value}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
+      {project.specs && project.specs.length > 0 && (
+        <section className="space-y-4">
+          <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
+            <Cpu className="w-4 h-4" />
+            <span>02 // TECHNICAL SPECIFICATIONS &amp; ARCHITECTURE</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
+            {project.specs.map((spec: any, i: number) => (
+              <div
+                key={i}
+                className="p-3 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex justify-between gap-3 shadow-sm"
+              >
+                <span className="text-zinc-400 dark:text-zinc-500">{spec.key}:</span>
+                <span className="text-zinc-900 dark:text-zinc-200 font-semibold text-right">
+                  {spec.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Bill of Materials (BOM) */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
-          <FileText className="w-4 h-4" />
-          <span>03 // BILL OF MATERIALS (PRIMARY HARDWARE)</span>
-        </div>
-        <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
-          <table className="w-full text-left text-xs font-mono">
-            <thead className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/90 text-indigo-700 dark:text-indigo-400 font-bold">
-              <tr>
-                <th className="p-3">Ref</th>
-                <th className="p-3">Component</th>
-                <th className="p-3">Description</th>
-                <th className="p-3 text-right">Qty</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-zinc-600 dark:text-zinc-400">
-              {project.bom.map((row: any, i: number) => (
-                <tr key={i} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
-                  <td className="p-3 text-indigo-600 dark:text-indigo-400 font-bold">{row.reference}</td>
-                  <td className="p-3 font-semibold text-zinc-900 dark:text-zinc-100">{row.component}</td>
-                  <td className="p-3">{row.description}</td>
-                  <td className="p-3 text-right text-zinc-900 dark:text-zinc-100 font-bold">{row.qty}</td>
+      {project.bom && project.bom.length > 0 && (
+        <section className="space-y-4">
+          <div className="flex items-center gap-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 font-bold">
+            <FileText className="w-4 h-4" />
+            <span>03 // BILL OF MATERIALS (PRIMARY HARDWARE)</span>
+          </div>
+          <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
+            <table className="w-full text-left text-xs font-mono">
+              <thead className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/90 text-indigo-700 dark:text-indigo-400 font-bold">
+                <tr>
+                  <th className="p-3">Ref</th>
+                  <th className="p-3">Component</th>
+                  <th className="p-3">Description</th>
+                  <th className="p-3 text-right">Qty</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+              </thead>
+              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-zinc-600 dark:text-zinc-400">
+                {project.bom.map((row: any, i: number) => (
+                  <tr key={i} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                    <td className="p-3 text-indigo-600 dark:text-indigo-400 font-bold">{row.reference}</td>
+                    <td className="p-3 font-semibold text-zinc-900 dark:text-zinc-100">{row.component}</td>
+                    <td className="p-3">{row.description}</td>
+                    <td className="p-3 text-right text-zinc-900 dark:text-zinc-100 font-bold">{row.qty}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

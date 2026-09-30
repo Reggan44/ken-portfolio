@@ -75,7 +75,7 @@ export function Footer() {
             <span>LinkedIn</span>
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/Reggan44"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-900 dark:hover:border-zinc-300 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all"

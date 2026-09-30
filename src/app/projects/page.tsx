@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Cpu, ArrowRight, Code2, ExternalLink, Filter } from "lucide-react";
+import { client, PROJECTS_QUERY, urlFor } from "@/lib/sanity/client";
 
 // Real Projects Data with Actual Extracted PDF Images
 const pdfProjects = [
@@ -19,7 +20,7 @@ const pdfProjects = [
       { key: "Protocols & Storage", value: "UART (GPS/GSM), SPI (SD Card Storage), I2C (OLED UI), Wi-Fi" },
       { key: "Operating System", value: "FreeRTOS Preemptive Kernel for Multitasking & Real-Time Response" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
     publishedAt: "2026-09-01",
   },
   {
@@ -37,7 +38,7 @@ const pdfProjects = [
       { key: "Protocols", value: "OneWire (Sensors), SPI (LCD & Flash Memory), UART (Pi), I2C (RTC)" },
       { key: "Power Sources", value: "240VAC Mains + Renewable DC Input Ports" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
     publishedAt: "2026-08-15",
   },
   {
@@ -55,7 +56,7 @@ const pdfProjects = [
       { key: "Telemetry & Features", value: "Temp, Humidity, Signal RSSI, Battery Voltage, Door Cycle Count" },
       { key: "Power System", value: "Li-Ion BMS Charger + Auto Voltage Selector IC" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
     publishedAt: "2026-07-20",
   },
   {
@@ -71,10 +72,20 @@ const pdfProjects = [
       { key: "Recognition", value: "1st Place Kenya/East Africa — Global YESIST12 Finals (Malaysia)" },
       { key: "Enclosure Rating", value: "IP65 Weatherproof Industrial Housing" },
     ],
-    githubRepo: "https://github.com",
+    githubRepo: "https://github.com/Reggan44",
     publishedAt: "2026-06-10",
   },
 ];
+
+function getImageUrl(image: any): string {
+  if (!image) return "/projects/cargo_p1_img1.jpeg";
+  if (typeof image === "string") return image;
+  try {
+    return urlFor(image).url();
+  } catch {
+    return "/projects/cargo_p1_img1.jpeg";
+  }
+}
 
 export const metadata = {
   title: "Projects & Hardware Builds | Kennedy Odeyo Otieno Portfolio",
@@ -82,7 +93,17 @@ export const metadata = {
     "Engineering portfolio of Kennedy Odeyo Otieno — Cargo-Care tracking, Oppie-Box power metering, Cold Chain Temp Tag, and BMS hardware.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  let sanityProjects: any[] = [];
+  try {
+    sanityProjects = await client.fetch(PROJECTS_QUERY);
+  } catch (err) {
+    console.error("Failed to fetch projects from Sanity:", err);
+  }
+
+  const projectsToDisplay =
+    sanityProjects && sanityProjects.length > 0 ? sanityProjects : pdfProjects;
+
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-6xl mx-auto space-y-12">
       {/* Header */}
@@ -123,15 +144,15 @@ export default function ProjectsPage() {
 
       {/* Projects List */}
       <div className="grid grid-cols-1 gap-8">
-        {pdfProjects.map((project) => (
+        {projectsToDisplay.map((project: any) => (
           <article
             key={project._id}
             className="card-elevated p-5 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 group hover:border-indigo-600 dark:hover:border-indigo-500"
           >
-            {/* Image Preview Thumbnail from PDF */}
+            {/* Image Preview Thumbnail */}
             <div className="md:col-span-4 relative h-48 sm:h-56 md:h-full min-h-[180px] rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
               <Image
-                src={project.mainImage}
+                src={getImageUrl(project.mainImage)}
                 alt={project.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -142,7 +163,7 @@ export default function ProjectsPage() {
             <div className="md:col-span-8 space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.tags.map((t) => (
+                  {(project.tags || []).map((t: string) => (
                     <span
                       key={t}
                       className="px-2 sm:px-2.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-[10px] sm:text-[11px] font-mono font-semibold"
@@ -160,19 +181,21 @@ export default function ProjectsPage() {
               </div>
 
               {/* Specs Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 font-mono text-[11px] sm:text-xs">
-                {project.specs.slice(0, 4).map((spec, i) => (
-                  <div
-                    key={i}
-                    className="p-2 sm:p-2.5 rounded bg-zinc-50 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 flex flex-col sm:flex-row sm:justify-between gap-0.5 sm:gap-2"
-                  >
-                    <span className="text-zinc-400 dark:text-zinc-500">{spec.key}:</span>
-                    <span className="text-zinc-900 dark:text-zinc-200 font-semibold sm:text-right">
-                      {spec.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {project.specs && project.specs.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 font-mono text-[11px] sm:text-xs">
+                  {project.specs.slice(0, 4).map((spec: any, i: number) => (
+                    <div
+                      key={i}
+                      className="p-2 sm:p-2.5 rounded bg-zinc-50 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 flex flex-col sm:flex-row sm:justify-between gap-0.5 sm:gap-2"
+                    >
+                      <span className="text-zinc-400 dark:text-zinc-500">{spec.key}:</span>
+                      <span className="text-zinc-900 dark:text-zinc-200 font-semibold sm:text-right">
+                        {spec.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="pt-2 flex items-center justify-between">
                 <span className="text-[10px] sm:text-xs font-mono text-zinc-400 dark:text-zinc-500">

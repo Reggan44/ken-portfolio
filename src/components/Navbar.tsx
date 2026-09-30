@@ -166,7 +166,7 @@ export function Navbar() {
               </a>
               <span>•</span>
               <a
-                href="https://github.com"
+                href="https://github.com/Reggan44"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"

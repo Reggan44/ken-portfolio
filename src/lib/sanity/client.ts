@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+import createImageUrlBuilder from "@sanity/image-url";
 import { sanityConfig } from "./env";
 
 export const client = createClient({
@@ -9,7 +9,7 @@ export const client = createClient({
   useCdn: sanityConfig.useCdn,
 });
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 
 export function urlFor(source: any) {
   return builder.image(source);
@@ -45,4 +45,25 @@ export const PROJECT_BY_SLUG_QUERY = `*[_type == "project" && slug.current == $s
   cadUrl,
   body,
   publishedAt
+}`;
+
+export const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  tags,
+  mainImage
+}`;
+
+export const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug][0] {
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  tags,
+  mainImage,
+  body
 }`;
