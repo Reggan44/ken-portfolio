@@ -113,6 +113,55 @@ const pdfProjects = [
     githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-06-10",
   },
+  {
+    _id: "farm-assistant",
+    title: "Farm Assistant (IoT in Agriculture)",
+    slug: "farm-assistant-iot",
+    tags: ["ESP32", "Agriculture", "Web Server", "Telemetry"],
+    summary:
+      "ESP32-based environmental monitoring station capturing real-time temperature, humidity, and soil moisture readings. Configured as a local access point station with an integrated web server.",
+    mainImage: "/projects/cargo_p1_img1.jpeg",
+    specs: [
+      { key: "Microcontroller", value: "ESP32 (Configured as AP & Web Server)" },
+      { key: "Sensors", value: "Temperature, Humidity, and Soil Moisture" },
+      { key: "Impact", value: "Precision farming aligned with SDG 2: #ZeroHunger" },
+      { key: "Planned Features", value: "Automated irrigation relay & nutrient monitoring" },
+    ],
+    githubRepo: "https://github.com/Kendeyo",
+    publishedAt: "2026-05-15",
+  },
+  {
+    _id: "paygo-solar",
+    title: "PAYGO Solar Embedded Paywall & Teardowns",
+    slug: "paygo-solar-embedded",
+    tags: ["Cryptography", "Hardware Teardown", "PAYGO", "Solar"],
+    summary:
+      "Deep-dive teardown and cryptographic analysis of Pay-As-You-Go (PAYGO) solar controllers used in Sub-Saharan clean energy access, focusing on offline token authentication.",
+    mainImage: "/projects/cargo_p2_img1.jpeg",
+    specs: [
+      { key: "Domain", value: "Sub-Saharan clean energy access" },
+      { key: "Focus", value: "Offline cryptographic token verification via MCU" },
+      { key: "Transaction Flow", value: "M-Pesa -> Cloud Token -> Keypad Entry -> Validation" },
+    ],
+    githubRepo: "https://github.com/Kendeyo",
+    publishedAt: "2026-04-20",
+  },
+  {
+    _id: "inhouse-daq",
+    title: "In-House Data Acquisition & Control Units",
+    slug: "inhouse-daq",
+    tags: ["PCB Design", "DAQ", "Firmware", "Industrial Monitoring"],
+    summary:
+      "End-to-end design, assembly, and validation of custom multi-board hardware systems tailored for industrial telemetry, data acquisition, and machine monitoring.",
+    mainImage: "/projects/cargo_p3_img1.jpeg",
+    specs: [
+      { key: "Scope", value: "PCB design, embedded firmware, and platform integration" },
+      { key: "Applications", value: "Host appliances, DAQ units, custom industrial control" },
+      { key: "Lifecycle", value: "Prototype to Validation" },
+    ],
+    githubRepo: "https://github.com/Kendeyo",
+    publishedAt: "2026-03-10",
+  },
 ];
 
 function getImageUrl(image: any): string {

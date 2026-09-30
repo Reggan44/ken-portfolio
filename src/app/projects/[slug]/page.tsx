@@ -178,6 +178,55 @@ const pdfProjectDetailData: Record<string, any> = {
     ],
     githubRepo: "https://github.com/Kendeyo",
   },
+  "farm-assistant-iot": {
+    title: "Farm Assistant (IoT in Agriculture)",
+    tags: ["ESP32", "Agriculture", "Web Server", "Telemetry"],
+    publishedAt: "2026-05-15",
+    summary:
+      "ESP32-based environmental monitoring station capturing real-time temperature, humidity, and soil moisture readings. Configured as a local access point station with an integrated web server.",
+    images: [
+      { src: "/projects/cargo_p1_img1.jpeg", caption: "IoT Environmental Monitoring Station" },
+    ],
+    specs: [
+      { key: "Microcontroller", value: "ESP32 (Configured as AP & Web Server)" },
+      { key: "Sensors", value: "Temperature, Humidity, and Soil Moisture" },
+      { key: "Impact", value: "Precision farming aligned with SDG 2: #ZeroHunger" },
+      { key: "Planned Features", value: "Automated irrigation relay & nutrient monitoring" },
+    ],
+    githubRepo: "https://github.com/Kendeyo",
+  },
+  "paygo-solar-embedded": {
+    title: "PAYGO Solar Embedded Paywall & Teardowns",
+    tags: ["Cryptography", "Hardware Teardown", "PAYGO", "Solar"],
+    publishedAt: "2026-04-20",
+    summary:
+      "Deep-dive teardown and cryptographic analysis of Pay-As-You-Go (PAYGO) solar controllers used in Sub-Saharan clean energy access, focusing on offline token authentication.",
+    images: [
+      { src: "/projects/cargo_p2_img1.jpeg", caption: "PAYGO Solar Hardware Teardown Analysis" },
+    ],
+    specs: [
+      { key: "Domain", value: "Sub-Saharan clean energy access" },
+      { key: "Focus", value: "Offline cryptographic token verification via MCU" },
+      { key: "Transaction Flow", value: "M-Pesa -> Cloud Token -> Keypad Entry -> MCU Secret Key -> Validation -> Credit Timer -> Relay" },
+    ],
+    githubRepo: "https://github.com/Kendeyo",
+  },
+  "inhouse-daq": {
+    title: "In-House Data Acquisition & Control Units (#IoT_Chronicles_Boards_bringup)",
+    tags: ["PCB Design", "DAQ", "Firmware", "Industrial Monitoring"],
+    publishedAt: "2026-03-10",
+    summary:
+      "End-to-end design, assembly, and validation of custom multi-board hardware systems tailored for industrial telemetry, data acquisition, and machine monitoring host appliances.",
+    images: [
+      { src: "/projects/cargo_p3_img1.jpeg", caption: "Batch of custom PCB data acquisition units" },
+    ],
+    specs: [
+      { key: "Scope", value: "PCB design, embedded firmware, and platform integration" },
+      { key: "Applications", value: "Host appliances, DAQ units, custom industrial monitoring/control" },
+      { key: "Lifecycle", value: "Hardware design through prototype validation" },
+    ],
+    githubRepo: "https://github.com/Kendeyo",
+  },
 };
 
 function getImageUrl(image: any): string {
