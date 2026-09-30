@@ -2,44 +2,43 @@ import Link from "next/link";
 import { FileText, Clock, ArrowRight, Tag, BookOpen } from "lucide-react";
 import { client, POSTS_QUERY } from "@/lib/sanity/client";
 
-// Mock Sample Blog Posts for hardware, firmware & math tutorials
 const samplePosts = [
   {
     _id: "b1",
-    title: "Deriving FOC Motor Vector Equations & Fast Fixed-Point Math",
-    slug: "foc-vector-math-fixed-point",
-    tags: ["Embedded", "Math", "FOC", "C++"],
-    publishedAt: "2026-09-10",
-    readTime: "8 min read",
+    title: "Simulating monitoring 10k deployed IoT devices at scale",
+    slug: "simulating-10k-iot-devices",
+    tags: ["IoT", "Grafana", "InfluxDB", "Python"],
+    publishedAt: "2026-05-10",
+    readTime: "3 min read",
     summary:
-      "A mathematical deep-dive into Clarke & Park transforms, space vector PWM duty calculation, and implementation in Q15/Q31 fixed-point C++ for ARM Cortex-M DSP instructions.",
+      "Stack breakdown for real-time device management at scale. Using InfluxDB for time-series storage, Grafana for visualization, and Python scripts for the devices.",
   },
   {
     _id: "b2",
-    title: "Designing 4-Layer High-Speed PCB Stackups for EMI Compliance",
-    slug: "4-layer-pcb-stackup-emi-compliance",
-    tags: ["PCB", "Hardware", "Signal Integrity"],
-    publishedAt: "2026-08-28",
-    readTime: "12 min read",
+    title: "Cellular IoT Fundamentals: LTE-M, NBIoT & Power Savings",
+    slug: "cellular-iot-fundamentals",
+    tags: ["Cellular", "LTE-M", "NBIoT", "MQTT"],
+    publishedAt: "2026-06-12",
+    readTime: "5 min read",
     summary:
-      "Controlled impedance microstrip routing, ground return path discontinuity management, and stitching capacitor placement for passing FCC Class B emissions.",
+      "Key learnings from Nordic Semiconductor's course. Deep dive into 3GPP releases, PSM & eDRX power saving, RCC protocols, and securing UDP/TCP connections with DTLS/TLS.",
   },
   {
     _id: "b3",
-    title: "FreeRTOS Task Synchronization & Zero-Copy Ring Buffers",
-    slug: "freertos-zero-copy-ring-buffers",
-    tags: ["RTOS", "Firmware", "C"],
-    publishedAt: "2026-08-04",
-    readTime: "10 min read",
+    title: "IoT Chronicles: Lessons from the field",
+    slug: "iot-chronicles-field-lessons",
+    tags: ["Field Experience", "Hardware", "Debugging"],
+    publishedAt: "2026-06-25",
+    readTime: "6 min read",
     summary:
-      "How to avoid lock contention and memory copies in high-throughput UART/CAN DMA interrupt service routines using atomic lock-free queues.",
+      "Building a one-off device is easy, but scaling brings unanticipated challenges. Notes on connectivity issues, field failures, unexpected freezing, and battery drain.",
   },
 ];
 
 export const metadata = {
-  title: "Blog & Technical Writing | Ken Portfolio",
+  title: "Articles & Insights | Ken Portfolio",
   description:
-    "Deep technical tutorials on embedded firmware, DSP math equations, high-speed PCB stackups, and RTOS architecture.",
+    "Technical articles, field notes, and insights on embedded firmware, IoT, cellular tech, and hardware bring-up.",
 };
 
 export const revalidate = 0;
@@ -61,13 +60,13 @@ export default async function BlogIndexPage() {
       <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800 pb-8">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold">
           <BookOpen className="w-3.5 h-3.5" />
-          TECHNICAL PAPERS &amp; TUTORIALS
+          TECHNICAL PAPERS &amp; INSIGHTS
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-zinc-50">
-          Articles &amp; Engineering Notes
+          Articles &amp; Insights
         </h1>
         <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-          In-depth technical guides covering control theory, MCU firmware optimization, PCB layout principles, and hardware bring-up lessons.
+          In-depth technical guides, field notes from hardware deployments, and insights from scaling IoT systems in real-world environments.
         </p>
       </div>
 

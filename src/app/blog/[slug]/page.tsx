@@ -5,54 +5,74 @@ import { client, POST_BY_SLUG_QUERY } from "@/lib/sanity/client";
 
 // Mock Blog Article Database
 const blogPosts: Record<string, any> = {
-  "foc-vector-math-fixed-point": {
-    title: "Deriving FOC Motor Vector Equations & Fast Fixed-Point Math",
-    tags: ["Embedded", "Math", "FOC", "C++"],
-    publishedAt: "2026-09-10",
-    readTime: "8 min read",
+  "simulating-10k-iot-devices": {
+    title: "Simulating monitoring 10k deployed IoT devices at scale",
+    tags: ["IoT", "Grafana", "InfluxDB", "Python"],
+    publishedAt: "2026-05-10",
+    readTime: "3 min read",
     summary:
-      "A mathematical deep-dive into Clarke & Park transforms, space vector PWM duty calculation, and implementation in Q15/Q31 fixed-point C++ for ARM Cortex-M DSP instructions.",
-    content: `
-### Introduction to Field Oriented Control (FOC)
-
-Field Oriented Control decouples the stator current of a 3-phase brushless motor into torque-producing ($I_q$) and flux-producing ($I_d$) components.
-
-#### 1. Clarke Transformation (Direct & Quadrature)
-Converts 3-phase currents ($I_a, I_b, I_c$) into 2-axis stationary frame ($\alpha, \beta$):
-
-$$I_\\alpha = I_a$$
-
-$$I_\\beta = \\frac{1}{\\sqrt{3}} (I_a + 2I_b)$$
-
-#### 2. Park Transformation (Stationary to Rotating Frame)
-Rotates the stationary $\\alpha, \\beta$ reference frame into the rotor position angle $\\theta$:
-
-$$I_d = I_\\alpha \\cos\\theta + I_\\beta \\sin\\theta$$
-
-$$I_q = -I_\\alpha \\sin\\theta + I_\\beta \\cos\\theta$$
-
-### C++ Q31 Fixed-Point Optimization
-
-For microcontrollers lacking a floating-point unit (FPU), or to run inside a 20kHz interrupt loop, fixed-point math is mandatory:
-
-\`\`\`cpp
-// Fast Q31 Park Transform Implementation
-typedef int32_t q31_t;
-
-void Park_Transform_Q31(q31_t i_alpha, q31_t i_beta, q31_t sin_theta, q31_t cos_theta, q31_t *i_d, q31_t *i_q) {
-    // Perform 64-bit multiplication and scale down by 31 bits
-    int64_t d_temp = ((int64_t)i_alpha * cos_theta) + ((int64_t)i_beta * sin_theta);
-    int64_t q_temp = -((int64_t)i_alpha * sin_theta) + ((int64_t)i_beta * cos_theta);
-
-    *i_d = (q31_t)(d_temp >> 31);
-    *i_q = (q31_t)(q_temp >> 31);
-}
-\`\`\`
-
-### Key Takeaways
-1. **Interrupt Latency**: Fixed-point transforms execute in under 45 clock cycles on ARM Cortex-M4 DSP cores.
-2. **Phase Margin**: Maintaining high PWM update rates guarantees smooth low-speed torque control.
-`,
+      "Stack breakdown for real-time device management at scale. Using InfluxDB for time-series storage, Grafana for visualization, and Python scripts for the devices.",
+    content: (
+      <div className="space-y-4">
+        <p>✨ Simulating monitoring 10k deployed IoT devices at scale for real time device management.</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">The Stack:</h3>
+        <ul className="list-disc pl-5 space-y-2">
+          <li><strong>InfluxDB</strong> (for time series storage) 📂</li>
+          <li><strong>Grafana</strong> (for visualization) 📊</li>
+          <li><strong>Python script</strong> for the devices 🤖</li>
+        </ul>
+        <p>Simulating device telemetry at this scale is crucial to ensure that your backend can handle the data ingestion pipeline before deploying physical hardware. We wrote a Python script to emulate 10,000 distinct IoT nodes publishing data payloads simultaneously. InfluxDB effortlessly ingested the time-series metric data, while Grafana provided a beautiful and responsive dashboard for real-time visualization of device health, latency, and data trends.</p>
+      </div>
+    ),
+  },
+  "cellular-iot-fundamentals": {
+    title: "Cellular IoT Fundamentals: LTE-M, NBIoT & Power Savings",
+    tags: ["Cellular", "LTE-M", "NBIoT", "MQTT"],
+    publishedAt: "2026-06-12",
+    readTime: "5 min read",
+    summary:
+      "Key learnings from Nordic Semiconductor's course. Deep dive into 3GPP releases, PSM & eDRX power saving, RCC protocols, and securing UDP/TCP connections with DTLS/TLS.",
+    content: (
+      <div className="space-y-4">
+        <p>💡 Finished the course on Cellular IoT Fundamentals by Nordic Semiconductor.</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Key Topics Understood:</h3>
+        <ol className="list-decimal pl-5 space-y-2">
+          <li><strong>LTE-M and NBIoT releases by 3GPP</strong>, and their differences in terms of bandwidth, uplink and downlink, and latency on IoT applications.</li>
+          <li><strong>Use cases of LTE-M and NBIoT</strong> and how to determine which suits a certain application.</li>
+          <li><strong>Power savings techniques</strong>: Deep dive into PSM and eDRX on Cellular modems.</li>
+          <li><strong>Radio Resource Control (RCC)</strong> Protocol.</li>
+          <li><strong>Transport layers and application layers</strong> used on user equipment (MQTT on TCP and COAP on UDP) with examples when using IP packets.</li>
+          <li><strong>Securing connections</strong>: Implementation of TLS on MQTT and DTLS on UDP.</li>
+          <li><strong>GNSS and LTE usage</strong> on modems simultaneously.</li>
+        </ol>
+        <p>Understanding these concepts is the key to building reliable, low-power cellular telemetry nodes that can last for years in the field.</p>
+      </div>
+    ),
+  },
+  "iot-chronicles-field-lessons": {
+    title: "IoT Chronicles: Lessons from the field 📝✍️",
+    tags: ["Field Experience", "Hardware", "Debugging"],
+    publishedAt: "2026-06-25",
+    readTime: "6 min read",
+    summary:
+      "Building a one-off device is easy, but scaling brings unanticipated challenges. Notes on connectivity issues, field failures, unexpected freezing, and battery drain.",
+    content: (
+      <div className="space-y-4">
+        <p>Many devices off-the-shelf only solve generic problems. Special cases require custom builds due to specific use cases.</p>
+        <p>💡 Building a one-off device is easy, but scaling it to multiples in the field brings challenges you couldn't anticipate. Here are my lessons from the field:</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">1️⃣ Initiating Operational Change</h3>
+        <p>Installing these devices for customers requires a change of behavior, workflows, and accountabilities around the new visibility, insights, and analysis those sensors create. You find that the technology part is adopted well but not the operations part. Training customers on usage can come in handy.</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">2️⃣ Connectivity Issues</h3>
+        <p>You have devices working well in the lab. Then suddenly you are dealing with concrete walls, metallic structures, underground locations... all factors that make GPS and sometimes cellular connections a problem. Adding those On-board LEDs for connection status can truly save a lot of time on field debugging & device diagnostics.</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">3️⃣ Field Failures in Deployed Devices</h3>
+        <p>You don't have logs that you can read directly from the deployed unit, apart from the telemetry structure sent to the server. This can become a nightmare especially on a unit that is hundreds/thousands of kilometers away and doesn't have OTA updates. SMS feature can be a great aid for this. Send a text to the device and it returns the logs you need in case connectivity is not the issue. The text can also be structured to put the device in maintenance mode and stream debug logs.</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">4️⃣ Unexpected "Freezing"</h3>
+        <p>Sometimes a device can perform well under test, and completely becomes a brick days after being deployed. Normal hardware resets work well, but these kinds are recalled. Sometimes when recalled there is 0 reproduce of the incident. You just sigh, smile and wonder.</p>
+        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">5️⃣ Battery Issues</h3>
+        <p>&quot;This can last 5 years&quot; suddenly results in &quot;lasted only a few months&quot;. Reason? Reconnectivity attempts especially on poor networks. Modems are usually power hungry and drain the juice off those batteries real quick in battery-powered applications. Suddenly the power calculations done in the device development phase become redundant.</p>
+        <p className="pt-4 italic">These challenges make the fun part of it all. Because I learn a lot from them.</p>
+      </div>
+    ),
   },
 };
 
@@ -134,31 +154,9 @@ export default async function BlogDetailPage({
         )}
 
         <div className="space-y-6 text-zinc-700 dark:text-zinc-300">
-          <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Field Oriented Control Fundamentals
-          </h3>
-          <p>
-            Field Oriented Control decouples the stator current of a 3-phase brushless motor into torque-producing (Iq) and flux-producing (Id) components using vector transforms.
-          </p>
-
-          {/* Code Block Example */}
-          <div className="p-4 rounded-xl bg-zinc-900 dark:bg-zinc-950 border border-zinc-800 font-mono text-xs text-zinc-200 space-y-2 shadow-sm">
-            <div className="text-indigo-400 font-semibold">// Q31 Fast Fixed-Point Park Transform</div>
-            <pre className="text-emerald-400 overflow-x-auto">
-{`typedef int32_t q31_t;
-
-void Park_Transform_Q31(q31_t i_alpha, q31_t i_beta, q31_t sin_theta, q31_t cos_theta, q31_t *i_d, q31_t *i_q) {
-    int64_t d_temp = ((int64_t)i_alpha * cos_theta) + ((int64_t)i_beta * sin_theta);
-    int64_t q_temp = -((int64_t)i_alpha * sin_theta) + ((int64_t)i_beta * cos_theta);
-
-    *i_d = (q31_t)(d_temp >> 31);
-    *i_q = (q31_t)(q_temp >> 31);
-}`}
-            </pre>
-          </div>
+          {post.content}
         </div>
       </article>
     </div>
   );
 }
-

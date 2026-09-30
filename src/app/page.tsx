@@ -48,6 +48,30 @@ const pdfFeaturedHighlights = [
   },
 ];
 
+const linkedinActivity = [
+  {
+    title: "Safaricom PLC Internship & Microsoft ADC Hackathon",
+    date: "August 2026",
+    content: "Reflecting on an incredible software engineering internship at Safaricom PLC and an intense Hackathon at Microsoft ADC. Learned massive lessons about scalable systems, AI, and enterprise software.",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/",
+    tag: "Career Update",
+  },
+  {
+    title: "IEEE YESIST12 Grand Finale in Malaysia",
+    date: "July 2026",
+    content: "Our team, SafeSafari, represented Kenya and East Africa at the global finals in Malaysia! Presented our IoT safety telemetry unit on a global stage.",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/",
+    tag: "Achievement",
+  },
+  {
+    title: "Hardware Teardowns: PAYGO Solar Controllers",
+    date: "June 2026",
+    content: "Reverse engineering offline Pay-As-You-Go solar controllers used in Sub-Saharan Africa. Deep dive into cryptographic token decoding via M-Pesa.",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/",
+    tag: "Reverse Engineering",
+  },
+];
+
 const telemetryMetrics = [
   { count: "4", label: "Deployed Systems", desc: "Cargo-Care, Oppie-Box, Temp Tag, Safe Safari" },
   { count: "240VAC", label: "Metering Precision", desc: "Industrial AC & DC Power Sensing" },
@@ -158,11 +182,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Recent Activity & Insights */}
+      <section className="space-y-6">
+        <div className="flex items-end justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
+          <div>
+            <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">01 // LATEST INSIGHTS &amp; UPDATES</span>
+            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 mt-0.5">Recent Activity</h2>
+          </div>
+          <a
+            href="https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1 text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold hover:underline"
+          >
+            <span>Follow on LinkedIn</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {linkedinActivity.map((activity, idx) => (
+            <article key={idx} className="card-elevated p-5 flex flex-col justify-between space-y-3 group hover:border-indigo-600 dark:hover:border-indigo-500">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-[11px] font-mono">
+                  <span className="text-indigo-600 dark:text-indigo-400 font-bold">{activity.date}</span>
+                  <span className="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/90 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
+                    {activity.tag}
+                  </span>
+                </div>
+                <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
+                  <a href={activity.link} target="_blank" rel="noopener noreferrer">{activity.title}</a>
+                </h3>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {activity.content}
+                </p>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href={activity.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-mono text-zinc-900 dark:text-zinc-100 font-bold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >
+                  <span>Read Post</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* Featured Projects Showcase */}
       <section className="space-y-6">
         <div className="flex items-end justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
           <div>
-            <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">01 // FEATURED HARDWARE BUILDS</span>
+            <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">02 // FEATURED HARDWARE BUILDS</span>
             <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 mt-0.5">Projects Showcase</h2>
           </div>
           <Link
