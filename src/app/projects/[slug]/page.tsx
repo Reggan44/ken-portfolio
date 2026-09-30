@@ -15,7 +15,9 @@ import {
 } from "lucide-react";
 import { client, PROJECT_BY_SLUG_QUERY, urlFor } from "@/lib/sanity/client";
 
-// Real PDF Project Detail Database with Actual Image Galleries
+export const revalidate = 0;
+
+// Real PDF Project Detail Database with Actual Image Galleries & GitHub Repos
 const pdfProjectDetailData: Record<string, any> = {
   "cargo-care-tracking-solution": {
     title: "Cargo-Care: Load Manager & Tamper Tracking Solution",
@@ -43,7 +45,33 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "SSD1306 OLED", description: "128x64 I2C Graphic Display Module", qty: 1, reference: "DISP1" },
       { component: "MicroSD Socket", description: "SPI Interface SD Card Slot for Offline Data Logging", qty: 1, reference: "J1" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
+  },
+  "esp32-wireless-blackbox-psv": {
+    title: "ESP32 Wireless Blackbox for PSV Fleet Telemetry",
+    tags: ["ESP32", "GPRS", "PSV / Matatu", "GPS", "OBD-II", "C++"],
+    publishedAt: "2026-08-25",
+    summary:
+      "A wireless blackbox telemetry & vehicle monitoring unit engineered specifically for public service vehicle (Matatu) transit operators. Features real-time speed tracking, geo-fencing alerts, crash detection, and remote cloud logging over cellular GPRS.",
+    images: [
+      { src: "/projects/cargo_p4_img2.jpeg", caption: "Pay-As-You-Go Machine Controller Unit with ESP-32S" },
+      { src: "/projects/cargo_p4_img4.jpeg", caption: "Enclosed Weatherproof Telemetry Node Housing" },
+      { src: "/projects/cargo_p4_img5.jpeg", caption: "Param Viewer HMI Interface & Telemetry" },
+    ],
+    specs: [
+      { key: "Target Vehicle", value: "PSV (Public Service Vehicles / Matatu Transit)" },
+      { key: "Core Processor", value: "ESP32-S3 Dual-Core 240MHz Microcontroller" },
+      { key: "Wireless Gateway", value: "SIM800L / SIM7600 4G & GPRS Cellular Modem" },
+      { key: "Sensor Integration", value: "GPS Location, 6-Axis Accelerometer (Crash Sensing), OBD-II Engine Bus" },
+      { key: "Repository Link", value: "github.com/Kendeyo/ESP32basedBlackbox" },
+    ],
+    bom: [
+      { component: "ESP32-S3-WROOM-1", description: "Dual-core 32-bit LX7 MCU with Vector Instructions", qty: 1, reference: "U1" },
+      { component: "SIM7600E-H", description: "LTE Cat-4 / 3G / 2G / GNSS Module", qty: 1, reference: "U2" },
+      { component: "MPU6050", description: "6-axis Motion Tracking Accelerometer & Gyroscope", qty: 1, reference: "U3" },
+      { component: "MCP2515", description: "CAN Bus Controller with SPI Interface for OBD-II", qty: 1, reference: "U4" },
+    ],
+    githubRepo: "https://github.com/Kendeyo/ESP32basedBlackbox",
   },
   "oppie-box-power-metering-gateway": {
     title: "Oppie-Box: Industrial Power Measurement & Edge Gateway",
@@ -71,7 +99,32 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "SCT-013-000", description: "Non-invasive AC Current Transformer Sensor 100A", qty: 3, reference: "CT1-CT3" },
       { component: "DS3231", description: "High-Accuracy I2C Real-Time Clock with TCXO", qty: 1, reference: "U3" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
+  },
+  "dt78-esp32-watch-firmware": {
+    title: "DT78 Open-Source ESP32 Smartwatch Firmware",
+    tags: ["ESP32", "Smartwatch", "C++", "Display Drivers", "Low Power"],
+    publishedAt: "2026-08-01",
+    summary:
+      "Custom open-source firmware written in C++ for the DT78 smartwatch platform powered by ESP32. Features low-power deep sleep task scheduling, custom graphics UI pipeline, step counting, and BLE connectivity.",
+    images: [
+      { src: "/projects/cargo_p3_img1.jpeg", caption: "Unpopulated Custom Wearable PCB Top Layer" },
+      { src: "/projects/cargo_p3_img2.jpeg", caption: "Assembled Temp Tag Circuit with Antenna & USB-C" },
+      { src: "/projects/cargo_p3_img3.jpeg", caption: "Assembled Temp Tag Bottom Layer & BMS Charger" },
+    ],
+    specs: [
+      { key: "Hardware Platform", value: "DT78 Wearable Smartwatch" },
+      { key: "Microcontroller", value: "ESP32 Wi-Fi & Bluetooth SoC" },
+      { key: "GUI & Display", value: "LVGL / Custom SPI TFT LCD Display Driver" },
+      { key: "Power Management", value: "Ultra-Low Power (ULP) Coprocessor Sleep Routine" },
+      { key: "Repository Link", value: "github.com/Kendeyo/dt78-esp32-firmware" },
+    ],
+    bom: [
+      { component: "ESP32-PICO-D4", description: "System in Package (SiP) with Flash, Crystal & Antenna", qty: 1, reference: "U1" },
+      { component: "ST7789V", description: "240x240 IPS Color Display Driver IC", qty: 1, reference: "DISP1" },
+      { component: "BMA421", description: "Ultra-small 3-axis Acceleration Sensor for Pedometer", qty: 1, reference: "U2" },
+    ],
+    githubRepo: "https://github.com/Kendeyo/dt78-esp32-firmware",
   },
   "temperature-tag-cold-chain-bms": {
     title: "Temperature Tag: Cold Chain Monitoring & BMS Solution",
@@ -98,7 +151,7 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "TP4056 + Protection", description: "1A Li-Ion Battery Charger with BMS Protection", qty: 1, reference: "U3" },
       { component: "SIM800C Module", description: "Cellular Modem for GPRS TCP/IP Server Transmission", qty: 1, reference: "U4" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
   },
   "safe-safari-global-finalist-telemetry": {
     title: "Safe Safari: Global YESIST12 Finalist Telemetry System",
@@ -122,7 +175,7 @@ const pdfProjectDetailData: Record<string, any> = {
       { component: "STM32F103C8T6", description: "ARM Cortex-M3 32-bit MCU (Blue Pill)", qty: 1, reference: "U1" },
       { component: "SIM800L", description: "Micro GSM/GPRS Breakout Module", qty: 1, reference: "U2" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
   },
 };
 

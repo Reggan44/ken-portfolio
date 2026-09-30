@@ -42,6 +42,8 @@ export const metadata = {
     "Deep technical tutorials on embedded firmware, DSP math equations, high-speed PCB stackups, and RTOS architecture.",
 };
 
+export const revalidate = 0;
+
 export default async function BlogIndexPage() {
   let sanityPosts: any[] = [];
   try {

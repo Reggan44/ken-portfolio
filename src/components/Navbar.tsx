@@ -157,7 +157,7 @@ export function Navbar() {
             {/* Social Links in Mobile */}
             <div className="flex items-center justify-center gap-3 text-xs font-mono text-zinc-500 dark:text-zinc-400">
               <a
-                href="https://www.linkedin.com/in/kennedy-odeyo/"
+                href="https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
@@ -166,7 +166,7 @@ export function Navbar() {
               </a>
               <span>•</span>
               <a
-                href="https://github.com/Reggan44"
+                href="https://github.com/Kendeyo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"

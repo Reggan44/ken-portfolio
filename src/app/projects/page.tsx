@@ -3,7 +3,9 @@ import Image from "next/image";
 import { Cpu, ArrowRight, Code2, ExternalLink, Filter } from "lucide-react";
 import { client, PROJECTS_QUERY, urlFor } from "@/lib/sanity/client";
 
-// Real Projects Data with Actual Extracted PDF Images
+export const revalidate = 0;
+
+// Real Projects Data with Actual Extracted PDF & GitHub Projects
 const pdfProjects = [
   {
     _id: "cargo-care",
@@ -20,8 +22,26 @@ const pdfProjects = [
       { key: "Protocols & Storage", value: "UART (GPS/GSM), SPI (SD Card Storage), I2C (OLED UI), Wi-Fi" },
       { key: "Operating System", value: "FreeRTOS Preemptive Kernel for Multitasking & Real-Time Response" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-09-01",
+  },
+  {
+    _id: "matatu-blackbox",
+    title: "ESP32 Wireless Blackbox for PSV Fleet Telemetry",
+    slug: "esp32-wireless-blackbox-psv",
+    tags: ["ESP32", "GPRS", "PSV / Matatu", "GPS", "OBD-II", "C++"],
+    summary:
+      "A wireless blackbox telemetry & vehicle monitoring unit engineered specifically for public service vehicle (Matatu) transit operators. Features real-time speed tracking, geo-fencing alerts, crash detection, and remote cloud logging over cellular GPRS.",
+    mainImage: "/projects/cargo_p4_img2.jpeg",
+    specs: [
+      { key: "Target Vehicle", value: "PSV (Public Service Vehicles / Matatu Transit)" },
+      { key: "Core Processor", value: "ESP32-S3 Dual-Core 240MHz MCU" },
+      { key: "Wireless Gateway", value: "SIM800L / SIM7600 4G & GPRS Cellular Modem" },
+      { key: "Sensor Integration", value: "GPS Location, 6-Axis Accelerometer (Crash Sensing), OBD-II Engine Bus" },
+      { key: "Repository", value: "github.com/Kendeyo/ESP32basedBlackbox" },
+    ],
+    githubRepo: "https://github.com/Kendeyo/ESP32basedBlackbox",
+    publishedAt: "2026-08-25",
   },
   {
     _id: "oppie-box",
@@ -38,8 +58,26 @@ const pdfProjects = [
       { key: "Protocols", value: "OneWire (Sensors), SPI (LCD & Flash Memory), UART (Pi), I2C (RTC)" },
       { key: "Power Sources", value: "240VAC Mains + Renewable DC Input Ports" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-08-15",
+  },
+  {
+    _id: "dt78-firmware",
+    title: "DT78 Open-Source ESP32 Smartwatch Firmware",
+    slug: "dt78-esp32-watch-firmware",
+    tags: ["ESP32", "Smartwatch", "C++", "Display Drivers", "Low Power"],
+    summary:
+      "Custom open-source firmware written in C++ for the DT78 smartwatch platform powered by ESP32. Features low-power deep sleep task scheduling, custom graphics UI pipeline, step counting, and BLE connectivity.",
+    mainImage: "/projects/cargo_p3_img1.jpeg",
+    specs: [
+      { key: "Hardware Platform", value: "DT78 Wearable Smartwatch" },
+      { key: "Microcontroller", value: "ESP32 Wi-Fi & Bluetooth SoC" },
+      { key: "GUI & Display", value: "LVGL / Custom SPI TFT LCD Display Driver" },
+      { key: "Power Management", value: "Ultra-Low Power (ULP) Coprocessor Sleep Routine" },
+      { key: "Repository", value: "github.com/Kendeyo/dt78-esp32-firmware" },
+    ],
+    githubRepo: "https://github.com/Kendeyo/dt78-esp32-firmware",
+    publishedAt: "2026-08-01",
   },
   {
     _id: "temp-tag",
@@ -56,7 +94,7 @@ const pdfProjects = [
       { key: "Telemetry & Features", value: "Temp, Humidity, Signal RSSI, Battery Voltage, Door Cycle Count" },
       { key: "Power System", value: "Li-Ion BMS Charger + Auto Voltage Selector IC" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-07-20",
   },
   {
@@ -72,7 +110,7 @@ const pdfProjects = [
       { key: "Recognition", value: "1st Place Kenya/East Africa — Global YESIST12 Finals (Malaysia)" },
       { key: "Enclosure Rating", value: "IP65 Weatherproof Industrial Housing" },
     ],
-    githubRepo: "https://github.com/Reggan44",
+    githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-06-10",
   },
 ];
@@ -101,8 +139,11 @@ export default async function ProjectsPage() {
     console.error("Failed to fetch projects from Sanity:", err);
   }
 
-  const projectsToDisplay =
-    sanityProjects && sanityProjects.length > 0 ? sanityProjects : pdfProjects;
+  // Combine Sanity projects at the top, avoiding duplicate slugs with pdfProjects
+  const filteredPdfProjects = pdfProjects.filter(
+    (pdf) => !sanityProjects.some((sp) => sp.slug === pdf.slug)
+  );
+  const projectsToDisplay = [...sanityProjects, ...filteredPdfProjects];
 
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-6xl mx-auto space-y-12">

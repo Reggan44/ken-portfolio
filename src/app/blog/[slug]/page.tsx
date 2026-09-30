@@ -56,6 +56,8 @@ void Park_Transform_Q31(q31_t i_alpha, q31_t i_beta, q31_t sin_theta, q31_t cos_
   },
 };
 
+export const revalidate = 0;
+
 export default async function BlogDetailPage({
   params,
 }: {

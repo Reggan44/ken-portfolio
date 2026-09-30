@@ -66,7 +66,7 @@ export function Footer() {
             <span>+254-793036309</span>
           </a>
           <a
-            href="https://www.linkedin.com/in/kennedy-odeyo/"
+            href="https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-blue-600 dark:hover:border-blue-400 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-all"
@@ -75,7 +75,7 @@ export function Footer() {
             <span>LinkedIn</span>
           </a>
           <a
-            href="https://github.com/Reggan44"
+            href="https://github.com/Kendeyo"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-900 dark:hover:border-zinc-300 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all"

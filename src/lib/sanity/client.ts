@@ -6,7 +6,7 @@ export const client = createClient({
   projectId: sanityConfig.projectId,
   dataset: sanityConfig.dataset,
   apiVersion: sanityConfig.apiVersion,
-  useCdn: sanityConfig.useCdn,
+  useCdn: false, // Ensure live updates published in Sanity Studio are fetched immediately
 });
 
 const builder = createImageUrlBuilder(client);
@@ -16,7 +16,7 @@ export function urlFor(source: any) {
 }
 
 // GROQ Queries
-export const PROJECTS_QUERY = `*[_type == "project"] | order(publishedAt desc) {
+export const PROJECTS_QUERY = `*[_type == "project"] | order(coalesce(publishedAt, _createdAt) desc) {
   _id,
   title,
   "slug": slug.current,
@@ -27,7 +27,8 @@ export const PROJECTS_QUERY = `*[_type == "project"] | order(publishedAt desc) {
   githubRepo,
   schematicUrl,
   cadUrl,
-  publishedAt
+  publishedAt,
+  _createdAt
 }`;
 
 export const PROJECT_BY_SLUG_QUERY = `*[_type == "project" && slug.current == $slug][0] {
@@ -44,17 +45,19 @@ export const PROJECT_BY_SLUG_QUERY = `*[_type == "project" && slug.current == $s
   schematicUrl,
   cadUrl,
   body,
-  publishedAt
+  publishedAt,
+  _createdAt
 }`;
 
-export const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
+export const POSTS_QUERY = `*[_type == "post"] | order(coalesce(publishedAt, _createdAt) desc) {
   _id,
   title,
   "slug": slug.current,
   excerpt,
   publishedAt,
   tags,
-  mainImage
+  mainImage,
+  _createdAt
 }`;
 
 export const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug][0] {
@@ -65,5 +68,6 @@ export const POST_BY_SLUG_QUERY = `*[_type == "post" && slug.current == $slug][0
   publishedAt,
   tags,
   mainImage,
-  body
+  body,
+  _createdAt
 }`;
