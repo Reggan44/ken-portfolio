@@ -25,19 +25,61 @@ const labEquipment = [
 
 const careerTimeline = [
   {
-    period: "2024 — PRESENT",
-    role: "Embedded Systems & IoT Engineer",
-    company: "Hardware & Telemetry Solutions",
+    period: "Jan 2026 — Present",
+    role: "Electronics and IoT Assistant",
+    company: "Drop Access Limited",
     details:
-      "Designing battery-powered load tracking systems (Cargo-Care), multi-phase industrial power meters (Oppie-Box), cold chain telemetry tags with door sensors, and STM32 Battery Management Systems (BMS).",
+      "Building solar powered, static & mobile solutions for heat sensitive and perishable products. Zayed Sustainability Prize'26 Finalist.",
   },
   {
-    period: "GLOBAL FINALIST",
-    role: "1st Place Winner (Kenya & East Africa Region)",
-    company: "YESIST12 Global Finals (Malaysia)",
+    period: "May 2025 — Nov 2025",
+    role: "Engineering Intern - Enterprise IoT",
+    company: "Safaricom PLC",
     details:
-      "Awarded 1st place in Kenya and East Africa for Safe Safari IoT telemetry system using Things Cloud platform, advancing to the global finals in Malaysia.",
+      "Hands-on training on Enterprise grade IoT solutions. Smart meters onboarding, backend development, and device engineering (designing PCBs for bespoke solutions).",
   },
+  {
+    period: "May 2024 — May 2025",
+    role: "Engineering Apprentice - Product Development",
+    company: "Elcom Networks",
+    details:
+      "Product Development focusing on Energy Metering Devices and Power Supplies.",
+  },
+  {
+    period: "Jan 2024 — May 2024",
+    role: "Engineering Apprentice - Embedded Systems",
+    company: "Phinalabs Technologies",
+    details:
+      "Designed Printed Circuit Boards (PCBs). Developed firmware for custom boards and performed testing on various electronic units.",
+  },
+  {
+    period: "Nov 2022 — Jan 2024",
+    role: "Junior Embedded System Engineer",
+    company: "Elcom Networks",
+    details:
+      "Research & Development. Developed firmware for electronic appliances, designed PCBs, performed lab testing, troubleshooting, and casing designs.",
+  },
+];
+
+const educationList = [
+  {
+    degree: "Bsc. Electrical and Electronics Engineering",
+    school: "Kenyatta University",
+    period: "Sept 2019 — Jan 2025",
+  },
+  {
+    degree: "Electrical, Electronics and Communications Engineering",
+    school: "Udemy",
+    period: "Certification",
+  },
+];
+
+const certifications = [
+  "Embedded-C Programming",
+  "Data Science Global Summit 22.2",
+  "Electric Vehicle Battery Management System",
+  "RF/ Antenna Fundamentals",
+  "Free RTOS",
 ];
 
 export const metadata = {
@@ -106,8 +148,8 @@ export default function AboutPage() {
       {/* Accomplishments & Project History */}
       <section className="space-y-6">
         <div className="flex items-center gap-2 font-mono text-sm text-indigo-600 dark:text-indigo-400 font-bold">
-          <Award className="w-4 h-4" />
-          <span>02 // KEY HIGHLIGHTS &amp; COMPETITIONS</span>
+          <Terminal className="w-4 h-4" />
+          <span>02 // EXPERIENCE</span>
         </div>
         <div className="space-y-6 border-l-2 border-zinc-200 dark:border-zinc-800 pl-6 ml-2">
           {careerTimeline.map((item, idx) => (
@@ -119,13 +161,55 @@ export default function AboutPage() {
               <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
                 {item.role} <span className="text-zinc-500 dark:text-zinc-400 font-normal">({item.company})</span>
               </h3>
-              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
                 {item.details}
               </p>
             </div>
           ))}
         </div>
       </section>
+
+      {/* Education & Certifications */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="space-y-6">
+          <div className="flex items-center gap-2 font-mono text-sm text-indigo-600 dark:text-indigo-400 font-bold">
+            <Award className="w-4 h-4" />
+            <span>03 // EDUCATION</span>
+          </div>
+          <div className="space-y-6">
+            {educationList.map((item, idx) => (
+              <div key={idx} className="card-elevated p-5">
+                <div className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-semibold mb-1">
+                  {item.period}
+                </div>
+                <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+                  {item.school}
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  {item.degree}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex items-center gap-2 font-mono text-sm text-indigo-600 dark:text-indigo-400 font-bold">
+            <FileCheck className="w-4 h-4" />
+            <span>04 // CERTIFICATIONS</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {certifications.map((cert, idx) => (
+              <span
+                key={idx}
+                className="px-3 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-sm font-mono"
+              >
+                {cert}
+              </span>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
