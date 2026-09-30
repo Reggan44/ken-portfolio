@@ -52,19 +52,19 @@ const linkedinActivity = [
   {
     title: "Safaricom PLC Internship & Microsoft ADC Hackathon",
     content: "Reflecting on an incredible software engineering internship at Safaricom PLC and an intense Hackathon at Microsoft ADC. Learned massive lessons about scalable systems, AI, and enterprise software.",
-    link: "https://www.linkedin.com/posts/kennedy-odeyo-otieno-42772a1b6_2025%E2%80%8Bsustainable%E2%80%8Bbusiness%E2%80%8Breport%E2%80%8Blaunch-activity-7386081088860827648-xPrW",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
     tag: "Career Update",
   },
   {
     title: "IEEE YESIST12 Grand Finale in Malaysia",
     content: "Our team, SafeSafari, represented Kenya and East Africa at the global finals in Malaysia! Presented our IoT safety telemetry unit on a global stage.",
-    link: "https://www.linkedin.com/posts/kennedy-odeyo-otieno-42772a1b6_yesist12-ieee-hackathon-activity-7384769046031978496-FQY-",
+    link: "https://www.linkedin.com/posts/kennedy-odeyo-otieno-42772a1b6_cogno-solution-was-one-interesting-build-ugcPost-7384769045159563264-Ykpe/",
     tag: "Achievement",
   },
   {
     title: "Hardware Teardowns: PAYGO Solar Controllers",
     content: "Reverse engineering offline Pay-As-You-Go solar controllers used in Sub-Saharan Africa. Deep dive into cryptographic token decoding via M-Pesa.",
-    link: "https://www.linkedin.com/posts/kennedy-odeyo-otieno-42772a1b6_device%E2%80%8Bteardowns-embeddedsystems-iot-activity-7487095398420037632-_xlm",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
     tag: "Reverse Engineering",
   },
 ];
