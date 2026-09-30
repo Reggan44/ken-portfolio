@@ -61,24 +61,7 @@ const pdfProjects = [
     githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-08-15",
   },
-  {
-    _id: "dt78-firmware",
-    title: "DT78 Open-Source ESP32 Smartwatch Firmware",
-    slug: "dt78-esp32-watch-firmware",
-    tags: ["ESP32", "Smartwatch", "C++", "Display Drivers", "Low Power"],
-    summary:
-      "Custom open-source firmware written in C++ for the DT78 smartwatch platform powered by ESP32. Features low-power deep sleep task scheduling, custom graphics UI pipeline, step counting, and BLE connectivity.",
-    mainImage: "/projects/cargo_p3_img1.jpeg",
-    specs: [
-      { key: "Hardware Platform", value: "DT78 Wearable Smartwatch" },
-      { key: "Microcontroller", value: "ESP32 Wi-Fi & Bluetooth SoC" },
-      { key: "GUI & Display", value: "LVGL / Custom SPI TFT LCD Display Driver" },
-      { key: "Power Management", value: "Ultra-Low Power (ULP) Coprocessor Sleep Routine" },
-      { key: "Repository", value: "github.com/Kendeyo/dt78-esp32-firmware" },
-    ],
-    githubRepo: "https://github.com/Kendeyo/dt78-esp32-firmware",
-    publishedAt: "2026-08-01",
-  },
+
   {
     _id: "temp-tag",
     title: "Temperature Tag: Cold Chain Monitoring & BMS Solution",
@@ -113,23 +96,7 @@ const pdfProjects = [
     githubRepo: "https://github.com/Kendeyo",
     publishedAt: "2026-06-10",
   },
-  {
-    _id: "farm-assistant",
-    title: "Farm Assistant (IoT in Agriculture)",
-    slug: "farm-assistant-iot",
-    tags: ["ESP32", "Agriculture", "Web Server", "Telemetry"],
-    summary:
-      "ESP32-based environmental monitoring station capturing real-time temperature, humidity, and soil moisture readings. Configured as a local access point station with an integrated web server.",
-    mainImage: "/projects/cargo_p1_img1.jpeg",
-    specs: [
-      { key: "Microcontroller", value: "ESP32 (Configured as AP & Web Server)" },
-      { key: "Sensors", value: "Temperature, Humidity, and Soil Moisture" },
-      { key: "Impact", value: "Precision farming aligned with SDG 2: #ZeroHunger" },
-      { key: "Planned Features", value: "Automated irrigation relay & nutrient monitoring" },
-    ],
-    githubRepo: "https://github.com/Kendeyo",
-    publishedAt: "2026-05-15",
-  },
+
   {
     _id: "paygo-solar",
     title: "PAYGO Solar Embedded Paywall & Teardowns",
@@ -210,27 +177,6 @@ export default async function ProjectsPage() {
         </p>
       </div>
 
-      {/* Filter Badges */}
-      <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-        <div className="flex items-center gap-1.5 mr-2 text-zinc-900 dark:text-zinc-200 font-bold">
-          <Filter className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-          <span>Filter:</span>
-        </div>
-        {["ALL", "ESP32", "FreeRTOS", "Energy Metering", "Cold Chain", "GSM/GPS", "BMS"].map(
-          (tag, i) => (
-            <button
-              key={tag}
-              className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer ${
-                i === 0
-                  ? "bg-indigo-600 border-indigo-600 text-white font-bold"
-                  : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400"
-              }`}
-            >
-              {tag}
-            </button>
-          )
-        )}
-      </div>
 
       {/* Projects List */}
       <div className="grid grid-cols-1 gap-8">

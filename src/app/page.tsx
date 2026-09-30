@@ -51,23 +51,20 @@ const pdfFeaturedHighlights = [
 const linkedinActivity = [
   {
     title: "Safaricom PLC Internship & Microsoft ADC Hackathon",
-    date: "August 2026",
     content: "Reflecting on an incredible software engineering internship at Safaricom PLC and an intense Hackathon at Microsoft ADC. Learned massive lessons about scalable systems, AI, and enterprise software.",
-    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
     tag: "Career Update",
   },
   {
     title: "IEEE YESIST12 Grand Finale in Malaysia",
-    date: "July 2026",
     content: "Our team, SafeSafari, represented Kenya and East Africa at the global finals in Malaysia! Presented our IoT safety telemetry unit on a global stage.",
-    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
     tag: "Achievement",
   },
   {
     title: "Hardware Teardowns: PAYGO Solar Controllers",
-    date: "June 2026",
     content: "Reverse engineering offline Pay-As-You-Go solar controllers used in Sub-Saharan Africa. Deep dive into cryptographic token decoding via M-Pesa.",
-    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/",
+    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
     tag: "Reverse Engineering",
   },
 ];
@@ -113,7 +110,7 @@ export default function Home() {
               Building Intelligent Embedded Hardware &amp; IoT Systems.
             </h1>
             <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
-              Hi, I am <strong className="text-zinc-950 dark:text-zinc-100">Kennedy Odeyo Otieno</strong> — an Electrical &amp; Embedded Systems Engineer. I specialize in real-time load manager tracking (Cargo-Care), industrial power metering (Oppie-Box), cold-chain loggers, and edge gateways.
+              Hi, I am <strong className="text-zinc-950 dark:text-zinc-100">Kennedy Odeyo Otieno</strong> — an Electrical &amp; Embedded Systems Engineer. I design, prototype, test, and troubleshoot embedded and electronic systems, with a strong focus on IoT and connected technologies. I enjoy turning ideas into practical, reliable hardware solutions—from circuit design and firmware to system integration.
             </p>
           </div>
         </div>
@@ -205,7 +202,7 @@ export default function Home() {
             <article key={idx} className="card-elevated p-5 flex flex-col justify-between space-y-3 group hover:border-indigo-600 dark:hover:border-indigo-500">
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-indigo-600 dark:text-indigo-400 font-bold">{activity.date}</span>
+                  <span className="text-indigo-600 dark:text-indigo-400 font-bold"></span>
                   <span className="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/90 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
                     {activity.tag}
                   </span>

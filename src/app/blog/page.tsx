@@ -2,38 +2,7 @@ import Link from "next/link";
 import { FileText, Clock, ArrowRight, Tag, BookOpen } from "lucide-react";
 import { client, POSTS_QUERY } from "@/lib/sanity/client";
 
-const samplePosts = [
-  {
-    _id: "b1",
-    title: "Simulating monitoring 10k deployed IoT devices at scale",
-    slug: "simulating-10k-iot-devices",
-    tags: ["IoT", "Grafana", "InfluxDB", "Python"],
-    publishedAt: "2026-05-10",
-    readTime: "3 min read",
-    summary:
-      "Stack breakdown for real-time device management at scale. Using InfluxDB for time-series storage, Grafana for visualization, and Python scripts for the devices.",
-  },
-  {
-    _id: "b2",
-    title: "Cellular IoT Fundamentals: LTE-M, NBIoT & Power Savings",
-    slug: "cellular-iot-fundamentals",
-    tags: ["Cellular", "LTE-M", "NBIoT", "MQTT"],
-    publishedAt: "2026-06-12",
-    readTime: "5 min read",
-    summary:
-      "Key learnings from Nordic Semiconductor's course. Deep dive into 3GPP releases, PSM & eDRX power saving, RCC protocols, and securing UDP/TCP connections with DTLS/TLS.",
-  },
-  {
-    _id: "b3",
-    title: "IoT Chronicles: Lessons from the field",
-    slug: "iot-chronicles-field-lessons",
-    tags: ["Field Experience", "Hardware", "Debugging"],
-    publishedAt: "2026-06-25",
-    readTime: "6 min read",
-    summary:
-      "Building a one-off device is easy, but scaling brings unanticipated challenges. Notes on connectivity issues, field failures, unexpected freezing, and battery drain.",
-  },
-];
+const samplePosts: any[] = [];
 
 export const metadata = {
   title: "Articles & Insights | Ken Portfolio",

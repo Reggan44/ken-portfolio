@@ -102,31 +102,7 @@ const pdfProjectDetailData: Record<string, any> = {
     ],
     githubRepo: "https://github.com/Kendeyo",
   },
-  "dt78-esp32-watch-firmware": {
-    title: "DT78 Open-Source ESP32 Smartwatch Firmware",
-    tags: ["ESP32", "Smartwatch", "C++", "Display Drivers", "Low Power"],
-    publishedAt: "2026-08-01",
-    summary:
-      "Custom open-source firmware written in C++ for the DT78 smartwatch platform powered by ESP32. Features low-power deep sleep task scheduling, custom graphics UI pipeline, step counting, and BLE connectivity.",
-    images: [
-      { src: "/projects/cargo_p3_img1.jpeg", caption: "Unpopulated Custom Wearable PCB Top Layer" },
-      { src: "/projects/cargo_p3_img2.jpeg", caption: "Assembled Temp Tag Circuit with Antenna & USB-C" },
-      { src: "/projects/cargo_p3_img3.jpeg", caption: "Assembled Temp Tag Bottom Layer & BMS Charger" },
-    ],
-    specs: [
-      { key: "Hardware Platform", value: "DT78 Wearable Smartwatch" },
-      { key: "Microcontroller", value: "ESP32 Wi-Fi & Bluetooth SoC" },
-      { key: "GUI & Display", value: "LVGL / Custom SPI TFT LCD Display Driver" },
-      { key: "Power Management", value: "Ultra-Low Power (ULP) Coprocessor Sleep Routine" },
-      { key: "Repository Link", value: "github.com/Kendeyo/dt78-esp32-firmware" },
-    ],
-    bom: [
-      { component: "ESP32-PICO-D4", description: "System in Package (SiP) with Flash, Crystal & Antenna", qty: 1, reference: "U1" },
-      { component: "ST7789V", description: "240x240 IPS Color Display Driver IC", qty: 1, reference: "DISP1" },
-      { component: "BMA421", description: "Ultra-small 3-axis Acceleration Sensor for Pedometer", qty: 1, reference: "U2" },
-    ],
-    githubRepo: "https://github.com/Kendeyo/dt78-esp32-firmware",
-  },
+
   "temperature-tag-cold-chain-bms": {
     title: "Temperature Tag: Cold Chain Monitoring & BMS Solution",
     tags: ["ESP32", "Cold Chain", "BMS", "I2C/SPI/UART", "GPRS"],
@@ -178,23 +154,7 @@ const pdfProjectDetailData: Record<string, any> = {
     ],
     githubRepo: "https://github.com/Kendeyo",
   },
-  "farm-assistant-iot": {
-    title: "Farm Assistant (IoT in Agriculture)",
-    tags: ["ESP32", "Agriculture", "Web Server", "Telemetry"],
-    publishedAt: "2026-05-15",
-    summary:
-      "ESP32-based environmental monitoring station capturing real-time temperature, humidity, and soil moisture readings. Configured as a local access point station with an integrated web server.",
-    images: [
-      { src: "/projects/cargo_p1_img1.jpeg", caption: "IoT Environmental Monitoring Station" },
-    ],
-    specs: [
-      { key: "Microcontroller", value: "ESP32 (Configured as AP & Web Server)" },
-      { key: "Sensors", value: "Temperature, Humidity, and Soil Moisture" },
-      { key: "Impact", value: "Precision farming aligned with SDG 2: #ZeroHunger" },
-      { key: "Planned Features", value: "Automated irrigation relay & nutrient monitoring" },
-    ],
-    githubRepo: "https://github.com/Kendeyo",
-  },
+
   "paygo-solar-embedded": {
     title: "PAYGO Solar Embedded Paywall & Teardowns",
     tags: ["Cryptography", "Hardware Teardown", "PAYGO", "Solar"],

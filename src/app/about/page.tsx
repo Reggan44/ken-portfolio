@@ -113,7 +113,7 @@ export default function AboutPage() {
               Kennedy Odeyo Otieno
             </h1>
             <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-              I am an Embedded Systems and IoT Engineer specializing in real-world hardware bring-ups. My work spans real-time load manager tracking (Cargo-Care), industrial power metering and edge computing (Oppie-Box), cold-chain environmental sensing with BMS, and competitive IoT solutions.
+              I am Results driven, energetic and detailed oriented electrical and electronics engineer with strong background in embedded systems design, prototyping, analysis and troubleshooting electronic circuits. Passionate about contributing to innovative IoT projects. Good at optimizing processes to improve performance, and partnering with diverse teams
             </p>
           </div>
         </div>
