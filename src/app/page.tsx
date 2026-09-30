@@ -52,7 +52,7 @@ const linkedinActivity = [
   {
     title: "Safaricom PLC Internship & Microsoft ADC Hackathon",
     content: "Reflecting on an incredible software engineering internship at Safaricom PLC and an intense Hackathon at Microsoft ADC. Learned massive lessons about scalable systems, AI, and enterprise software.",
-    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
+    link: "https://www.linkedin.com/posts/kennedy-odeyo-otieno-42772a1b6_2025abrsustainableabrbusinessabrreportabrlaunch-activity-7429935319413800960-Iq98?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEErED4BsxbfDtZ2YsbRelwehq_NbQNicUc",
     tag: "Career Update",
   },
   {
