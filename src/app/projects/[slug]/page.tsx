@@ -14,6 +14,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 import { client, PROJECT_BY_SLUG_QUERY, urlFor } from "@/lib/sanity/client";
+import { CustomPortableText } from "@/components/PortableText";
 
 export const revalidate = 0;
 
@@ -269,6 +270,13 @@ export default async function ProjectDetailPage({
           )}
         </div>
       </div>
+
+      {/* Rich MDX Body content (if available via Sanity) */}
+      {project.body && (
+        <article className="prose prose-zinc dark:prose-invert max-w-none w-full">
+          <CustomPortableText value={project.body} />
+        </article>
+      )}
 
       {/* Actual Photo Gallery */}
       {displayImages && displayImages.length > 0 && (
