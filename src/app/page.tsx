@@ -61,12 +61,6 @@ const linkedinActivity = [
     link: "https://www.linkedin.com/posts/kennedy-odeyo-otieno-42772a1b6_cogno-solution-was-one-interesting-build-ugcPost-7384769045159563264-Ykpe/",
     tag: "Achievement",
   },
-  {
-    title: "Hardware Teardowns: PAYGO Solar Controllers",
-    content: "Reverse engineering offline Pay-As-You-Go solar controllers used in Sub-Saharan Africa. Deep dive into cryptographic token decoding via M-Pesa.",
-    link: "https://www.linkedin.com/in/kennedy-odeyo-otieno-42772a1b6/recent-activity/all/",
-    tag: "Reverse Engineering",
-  },
 ];
 
 const telemetryMetrics = [
@@ -197,7 +191,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {linkedinActivity.map((activity, idx) => (
             <article key={idx} className="card-elevated p-5 flex flex-col justify-between space-y-3 group hover:border-indigo-600 dark:hover:border-indigo-500">
               <div className="space-y-2">
