@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   User,
   Cpu,
@@ -93,16 +94,29 @@ export default function AboutPage() {
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-5xl mx-auto space-y-16">
       {/* Bio Header */}
       <div className="space-y-6 border-b border-zinc-200 dark:border-zinc-800 pb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold">
-          <User className="w-3.5 h-3.5" />
-          EMBEDDED SYSTEMS &amp; INTERNET OF THINGS (IOT) ENGINEER
+        <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
+          <div className="shrink-0 relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white dark:border-zinc-900 shadow-xl">
+            <Image
+              src="/ken-profile.jpg"
+              alt="Kennedy Odeyo Otieno"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-semibold">
+              <User className="w-3.5 h-3.5" />
+              EMBEDDED SYSTEMS &amp; INTERNET OF THINGS (IOT) ENGINEER
+            </div>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-zinc-900 dark:text-zinc-50">
+              Kennedy Odeyo Otieno
+            </h1>
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
+              I am an Embedded Systems and IoT Engineer specializing in real-world hardware bring-ups. My work spans real-time load manager tracking (Cargo-Care), industrial power metering and edge computing (Oppie-Box), cold-chain environmental sensing with BMS, and competitive IoT solutions.
+            </p>
+          </div>
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-zinc-900 dark:text-zinc-50">
-          Kennedy Odeyo Otieno
-        </h1>
-        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-          I am an Embedded Systems and IoT Engineer specializing in real-world hardware bring-ups. My work spans real-time load manager tracking (Cargo-Care), industrial power metering and edge computing (Oppie-Box), cold-chain environmental sensing with BMS, and competitive IoT solutions.
-        </p>
 
         <div className="flex flex-wrap gap-4 pt-2 font-mono text-xs">
           <a

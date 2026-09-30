@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Cpu,
   Zap,
@@ -73,13 +74,24 @@ export default function Home() {
         </div>
 
         {/* Hero Headline */}
-        <div className="space-y-4 max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1]">
-            Building Intelligent Embedded Hardware &amp; IoT Systems.
-          </h1>
-          <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
-            I am <strong className="text-zinc-950 dark:text-zinc-100">Kennedy Odeyo Otieno</strong> — an Electrical &amp; Embedded Systems Engineer. I specialize in real-time load manager tracking (Cargo-Care), industrial power metering (Oppie-Box), cold-chain loggers, and edge gateways.
-          </p>
+        <div className="flex flex-col md:flex-row gap-8 items-start md:items-center max-w-4xl">
+          <div className="shrink-0 relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white dark:border-zinc-900 shadow-xl">
+            <Image
+              src="/ken-profile.jpg"
+              alt="Kennedy Odeyo Otieno"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1]">
+              Building Intelligent Embedded Hardware &amp; IoT Systems.
+            </h1>
+            <p className="text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
+              Hi, I am <strong className="text-zinc-950 dark:text-zinc-100">Kennedy Odeyo Otieno</strong> — an Electrical &amp; Embedded Systems Engineer. I specialize in real-time load manager tracking (Cargo-Care), industrial power metering (Oppie-Box), cold-chain loggers, and edge gateways.
+            </p>
+          </div>
         </div>
 
         {/* Hero Actions */}
